@@ -13,7 +13,7 @@ class Marver
   end
 
   def characters(name = nil)
-    endpoint = build_url "characters"
+    endpoint = build_url("characters")
     endpoint = endpoint + "&name=#{name}" unless name.nil?
     response = RestClient.get endpoint
   end
