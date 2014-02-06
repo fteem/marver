@@ -2,9 +2,13 @@ require_relative '../../lib/base.rb'
 
 describe Marver::Character do
   let(:comic_json) { { "name" => "Avengers" } }
-  let(:character) { Marver::Character.new({ "name" => "Hulk", "description" => "Lorem ipsum",
+  let(:character) { Marver::Character.new({ "id" => "12345", "name" => "Hulk", "description" => "Lorem ipsum",
                               "thumbnail" => { "path" => "some_image", "extension" => "png"},
                               "comics" => { "items" => [ comic_json ]}})}
+  it 'has an id' do
+    expect(character.id).to eq "12345"
+  end
+
   it 'has a name' do
     expect(character.name).to eq "Hulk"
   end

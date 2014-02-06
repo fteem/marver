@@ -1,8 +1,9 @@
 module Marver
   class Character
-    attr_accessor :name, :description, :thumbnail, :comics
+    attr_reader :id, :name, :description, :thumbnail, :comics
 
     def initialize(json)
+      @id = json['id']
       @name = json['name'].strip
       @description = json['description']
       @thumbnail = build_thumbnail_url(json)
