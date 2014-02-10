@@ -1,4 +1,4 @@
-require_relative '../../lib/base.rb'
+require_relative '../../lib/marver.rb'
 
 describe Marver::Character do
   let(:comic_json) { { "name" => "Avengers" } }
@@ -21,8 +21,4 @@ describe Marver::Character do
     expect(character.thumbnail).to eq "some_image.png"
   end
 
-  it 'has a list of comics' do
-    Marver::Comic.stub(:new).and_return comic = double
-    expect(character.comics).to eq [comic]
-  end
 end
