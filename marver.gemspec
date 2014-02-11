@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'marver'
-  s.version     = '0.0.0'
+  s.version     = '0.1'
   s.date        = '2014-02-03'
   s.summary     = "Marver"
   s.description = "Marvel API Ruby Gem"

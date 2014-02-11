@@ -21,4 +21,10 @@ describe Marver::Character do
     expect(character.thumbnail).to eq "some_image.png"
   end
 
+  describe "#comics" do
+    it 'has a list of comics' do
+      expect(character.comics.first).to eq "Avengers"
+    end
+  end
+
 end
