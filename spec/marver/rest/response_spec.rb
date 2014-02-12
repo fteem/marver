@@ -1,6 +1,7 @@
 require 'spec_helper'
 require './lib/marver/rest/client.rb'
 require './lib/marver/rest/response.rb'
+require './lib/marver/rest/data_container.rb'
 
 describe Marver::REST::Response do
 
