@@ -1,3 +1,7 @@
+require_relative 'rest/client.rb'
+require_relative 'rest/response.rb'
+require_relative 'character'
+
 module Marver
   class Client
     attr_reader :rest_client
@@ -7,7 +11,8 @@ module Marver
     end
 
     def characters
-      rest_client.call("characters")
+      result = rest_client.call("characters")
+      Marver::Character.build(result)
     end
 
   end

@@ -19,17 +19,8 @@ describe Marver::REST::Response do
     expect(@response.status).to eq "OK"
   end
 
-  context 'results' do
-    it 'is an array' do
-      expect(@response.results.class).to eq Array
-    end
-
-    it 'has Hulk in the array' do
-      expect(@response.results.first['name']).to eq "Hulk"
-    end
+  it 'has a data conatiner' do
+    expect(@response.data.class).to eq Marver::REST::DataContainer
   end
 
-  it 'has number of results' do
-    expect(@response.number_of_results).to eq 2
-  end
 end
