@@ -1,3 +1,4 @@
+require 'json'
 require 'webmock'
 include WebMock::API
 

@@ -1,6 +1,5 @@
 require_relative 'rest/client.rb'
 require_relative 'rest/response.rb'
-require_relative 'character'
 
 module Marver
   class Client
