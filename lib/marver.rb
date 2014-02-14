@@ -2,6 +2,7 @@ require './lib/marver/client.rb'
 require './lib/marver/version.rb'
 
 #Entities
+require './lib/marver/entities/entity.rb'
 require './lib/marver/entities/character.rb'
 require './lib/marver/entities/url.rb'
 require './lib/marver/entities/comic.rb'

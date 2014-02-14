@@ -1,11 +1,6 @@
-module Marver
-  class Story
-    attr_reader :name, :type, :resource_uri
+require_relative 'entity.rb'
 
-    def initialize(json)
-      @name = json['name']
-      @type = json['type']
-      @resource_uri = json['resourceURI']
-    end
+module Marver
+  class Story < Entity
   end
 end

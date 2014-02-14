@@ -1,10 +1,6 @@
-module Marver
-  class Event
-    attr_reader :name, :resource_uri
+require_relative 'entity.rb'
 
-    def initialize(json)
-      @name = json['name']
-      @resource_uri = json['resourceURI']
-    end
+module Marver
+  class Event < Entity
   end
 end

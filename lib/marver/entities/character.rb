@@ -1,19 +1,20 @@
+Dir["./lib/marver/entities/*.rb"].each {|file| require file }
+
 module Marver
-  class Character
-    attr_reader :id, :name, :description, :resource_uri, :urls,
+  class Character < Entity
+    attr_reader :id, :description, :resource_uri, :urls,
       :thumbnail, :comics, :stories, :events, :series
 
     def initialize(json)
       @id = json['id']
-      @name = json['name']
       @description = json['description']
-      @resource_uri = json['resourceURI']
       @urls = build_urls_list(json)
       @thumbnail = build_thumbnail_url(json)
       @comics = build_comics_list(json)
       @stories = build_stories_list(json)
       @events = build_events_list(json)
       @series = build_series_list(json)
+      super(json)
     end
 
     private
@@ -31,28 +32,28 @@ module Marver
     def build_comics_list(json)
       return nil unless json['comics']
       json['comics']['items'].collect do |comic|
-        Marver::Comic.new(comic)
+        Marver::Entity.new(comic)
       end
     end
 
     def build_stories_list(json)
       return nil unless json['stories']
       json['stories']['items'].collect do |story|
-        Marver::Story.new(story)
+        Marver::Entity.new(story)
       end
     end
 
     def build_events_list(json)
       return nil unless json['events']
       json['events']['items'].collect do |event|
-        Marver::Event.new(event)
+        Marver::Entity.new(event)
       end
     end
 
     def build_series_list(json)
       return nil unless json['series']
       json['series']['items'].collect do |serie|
-        Marver::Serie.new(serie)
+        Marver::Entity.new(serie)
       end
     end
   end

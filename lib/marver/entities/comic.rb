@@ -1,11 +1,12 @@
+require_relative 'entity.rb'
+
 module Marver
-  class Comic
-    attr_reader :id, :name, :resource_uri
+  class Comic < Entity
+    attr_reader :id
 
     def initialize(json)
-      @id   = json['id']
-      @name = json['name']
-      @resource_uri = json['resourceURI']
+      @id = json['id']
+      super(json)
     end
   end
 end
