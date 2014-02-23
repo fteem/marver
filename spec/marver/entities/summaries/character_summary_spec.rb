@@ -1,15 +1,18 @@
-require_relative '../../spec_helper'
-require './lib/marver/entities/character_summary'
+require './lib/marver/entities/summaries/character_summary'
+require './lib/marver/credentials'
 
 describe Marver::CharacterSummary do
-  let(:character_summary) { Marver::CharacterSummary.new({ "id" => "123", "resourceURI" => "http://example.net", "name" => "Hulk" }) }
+  let(:credentials) { Marver::Credentials.new('priv_key', 'pub_key') }
+  let(:character_summary) { Marver::CharacterSummary.new({ "id" => "123", "resourceURI" => "http://example.net", "name" => "Hulk" },
+                                                         credentials) }
 
   it '#id' do
     expect(character_summary.id).to eq 123
   end
 
   it '#resource_uri' do
-    expect(character_summary.resource_uri).to eq "http://example.net"
+    Time.stub_chain(:now, :to_i, :to_s).and_return "1"
+    expect(character_summary.resource_uri).to eq "http://example.net?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
 
   it '#type should always be nil' do
@@ -22,7 +25,8 @@ describe Marver::CharacterSummary do
 
   describe '#full' do
     it 'fetches the full view of the entity' do
-      pending
+
+
     end
   end
 end
