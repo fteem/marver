@@ -1,4 +1,5 @@
 require 'json'
+require_relative 'data_container'
 
 module Marver
   module REST
@@ -9,8 +10,7 @@ module Marver
         json  = JSON.parse(raw_json)
         @code = json['code'].to_i
         @status = json['status']
-        @data = json['data']
-        @results = @data['results']
+        @data = Marver::REST::DataContainer.new(json['data'])
       end
 
     end
