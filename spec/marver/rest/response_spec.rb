@@ -1,7 +1,6 @@
 require 'spec_helper'
 require './lib/marver/rest/client.rb'
 require './lib/marver/rest/response.rb'
-require './lib/marver/rest/data_container.rb'
 
 describe Marver::REST::Response do
 
@@ -18,10 +17,6 @@ describe Marver::REST::Response do
 
   it 'has a status' do
     expect(@response.status).to eq "OK"
-  end
-
-  it 'has a data conatiner' do
-    expect(@response.data.class).to eq Marver::REST::DataContainer
   end
 
 end

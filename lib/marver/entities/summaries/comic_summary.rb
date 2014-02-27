@@ -1,14 +1,14 @@
+require './lib/marver.rb'
+
 module Marver
-  class SerieSummary
-    attr_reader :id, :name, :resource_uri, :type
+  class ComicSummary
+    attr_reader :id, :title, :resource_uri, :type
 
     def initialize(json, credentials)
-      @id = json['id'].to_i || nil
       @credentials = credentials
-      @name = json['name']
+      @title = json['title']
       @resource_uri = "#{json['resourceURI']}?#{@credentials.to_s}"
-      @type = json['type'] || nil
+      @id = json['id'].to_i
     end
-
   end
 end

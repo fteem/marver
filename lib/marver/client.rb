@@ -1,17 +1,12 @@
-require_relative 'rest/client.rb'
-require_relative 'rest/response.rb'
+require './lib/marver.rb'
 
 module Marver
   class Client
-    attr_reader :rest_client
+    attr_reader :characters
 
     def initialize(private_key, public_key)
-      @rest_client = Marver::REST::Client.new(private_key, public_key)
-    end
-
-    def characters
-      result = rest_client.call("characters")
-      Marver::Character.build(result)
+      @credentials = Marver::Credentials.new(private_key, public_key)
+      @characters = Marver::CharacterFinder.new(@credentials)
     end
 
   end
