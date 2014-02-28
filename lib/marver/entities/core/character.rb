@@ -1,36 +1,35 @@
 require './lib/marver.rb'
 
 module Marver
-  class Character < CharacterSummary
+  class Character
 
     class << self
       def build(response, credentials)
-        if response.results.length > 1
-          response.results.collect do |result|
-            new(result, credentials)
-          end
-        else
-          new(response.results.first, credentials)
-        end
+        new(response.results, credentials)
       end
     end
 
-    attr_reader :description, :urls,
+    attr_reader :id, :resource_uri, :description, :urls, :name,
       :thumbnail, :comics, :stories, :events, :series
 
 
-    def initialize(results, credentials)
+
+    def initialize(response, credentials)
       @credentials = credentials
 
-      @description = results['description']
-      @urls = build_urls_list(results)
-      @thumbnail = build_thumbnail_url(results)
+      @description = response['description']
+      @id = response['id'].to_i
+      @credentials = credentials
+      @name = response['name']
+      @resource_uri = "#{response['resourceURI']}?#{@credentials.to_s}"
 
-      @comics = build_comics_list(results)
-      @stories = build_stories_list(results)
-      @events = build_events_list(results)
-      @series = build_series_list(results)
-      super(results, credentials)
+      @urls = build_urls_list(response)
+      @thumbnail = build_thumbnail_url(response)
+
+      @comics = build_comics_list(response)
+      @stories = build_stories_list(response)
+      @events = build_events_list(response)
+      @series = build_series_list(response)
     end
 
     private

@@ -5,9 +5,10 @@ require './lib/marver.rb'
 describe Marver::Story do
   describe "Attributes" do
 
+    let(:credentials) { Marver::Credentials.new("priv_key", 'pub_key') }
     let(:story) { Marver::Story.new({
               "resourceURI" => "http://gateway.marvel.com/v1/public/stories/703",
-              "name" => "Interior #703", "type" => "interiorStory" })
+              "name" => "Interior #703", "type" => "interiorStory" }, credentials)
                 }
 
     it "#name - The story title." do

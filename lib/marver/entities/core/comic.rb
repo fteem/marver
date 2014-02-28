@@ -1,14 +1,18 @@
 require './lib/marver.rb'
 
 module Marver
-  class Comic < ComicSummary
+  class Comic
     attr_reader :id, :digital_id, :title, :issue_number,
                 :variant_description, :description, :isbn,
                 :upc, :diamond_code, :ean, :issn, :format,
-                :page_count
+                :page_count, :resource_uri
 
     def initialize(json, credentials)
       @json = json
+      @credentials = credentials
+      @title = json['title']
+      @resource_uri = "#{json['resourceURI']}?#{@credentials.to_s}"
+      @id = json['id'].to_i
       @digital_id = json['digitalId']
       @issue_number = json['issueNumber']
       @variant_description = json['variantDescription']
@@ -20,7 +24,6 @@ module Marver
       @issn = json['issn']
       @format = json['format']
       @page_count = json['pageCount']
-      super(json, credentials)
     end
 
     def thumbnail

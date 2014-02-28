@@ -13,9 +13,9 @@ module Marver
     end
 
     def full
-      url = "#{@resource_uri}?#{@credentials.to_s}"
-      response = Marver::REST::Response.new(RestClient.get(url))
-      Marver::Character.build(response, @credentials)
+      response = Marver::REST::Response.new(RestClient.get(@resource_uri))
+      data = Marver::DataContainer.new(response)
+      Marver::Character.build(data, @credentials)
     end
 
   end
