@@ -24,7 +24,7 @@ describe Marver::Character do
 
     it '#resourceURI - The canonical URL identifier for this resource.' do
       Time.stub_chain(:now, :to_i, :to_s).and_return "1"
-      expect(character.resource_uri).to eq "http://gateway.marvel.com/v1/public/characters/1009220?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+      expect(character.resource_uri).to eq "http://gateway.marvel.com/v1/public/characters/1009220?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
     end
 
     it '#urls - A set of public web site URLs for the resource.' do
@@ -46,14 +46,14 @@ describe Marver::Character do
         expect(character.comics.class).to eq Array
         expect(character.comics.first.class).to eq Marver::ComicSummary
         expect(character.comics.first.name).to eq "Age of Apocalypse (2011) #2 (Avengers Art Appreciation Variant)"
-        expect(character.comics.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/comics/42539?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+        expect(character.comics.first.resource_uri).to eq          "http://gateway.marvel.com/v1/public/comics/42539?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
       end
 
       it '#stories - A resource list of stories in which this character appears.' do
         expect(character.stories.class).to eq Array
         expect(character.stories.first.class).to eq Marver::StorySummary
         expect(character.stories.first.name).to eq "Cover #892"
-        expect(character.stories.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/stories/892?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+        expect(character.stories.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/stories/892?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
         expect(character.stories.first.type).to eq "cover"
       end
 
@@ -61,14 +61,14 @@ describe Marver::Character do
         expect(character.events.class).to eq Array
         expect(character.events.first.class).to eq Marver::EventSummary
         expect(character.events.first.name).to eq "Acts of Vengeance!"
-        expect(character.events.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/events/116?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+        expect(character.events.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/events/116?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
       end
 
       it '#series - A resource list of series in which this character appears.' do
         expect(character.series.class).to eq Array
         expect(character.series.first.class).to eq Marver::SerieSummary
         expect(character.series.first.name).to eq "Age of Apocalypse (2011 - Present)"
-        expect(character.series.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/15331?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+        expect(character.series.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/15331?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
       end
     end
 
