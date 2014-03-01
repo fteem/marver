@@ -4,7 +4,7 @@ module Marver
   class Credentials
     attr_reader :public_key, :private_key, :timestamp
 
-    def initialize(public_key, private_key)
+    def initialize(private_key, public_key)
       @public_key  = public_key
       @private_key = private_key
       @timestamp = Time.now.to_i.to_s
