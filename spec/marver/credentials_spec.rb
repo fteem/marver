@@ -1,7 +1,7 @@
 require './lib/marver.rb'
 
 describe Marver::Credentials do
-  let(:credentials) { Marver::Credentials.new("pub_key", "priv_key") }
+  let(:credentials) { Marver::Credentials.new("priv_key", "pub_key") }
 
   it "has a API private key" do
     expect(credentials.public_key).to eq "pub_key"
