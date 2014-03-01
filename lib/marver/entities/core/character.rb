@@ -5,7 +5,13 @@ module Marver
 
     class << self
       def build(response, credentials)
-        new(response.results, credentials)
+        if response.kind_of?(Array)
+          response.collect do |character|
+            Marver::Character.new(character, credentials)
+          end
+        else
+          new(response.results, credentials)
+        end
       end
     end
 
