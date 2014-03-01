@@ -17,7 +17,7 @@ module Marver
     private
 
     def url
-      "characters?#{@credentials.to_s}"
+      "characters/?#{@credentials.to_s}"
     end
   end
 end
