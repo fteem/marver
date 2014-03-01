@@ -14,7 +14,7 @@ describe Marver::CreatorSummary do
   end
 
   it '#resource_uri - The canonical URL identifier for this resource.' do
-    expect(@creator.resource_uri).to eq "http://gateway.marvel.com/v1/public/creators/648?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
+    expect(@creator.resource_uri).to eq "http://gateway.marvel.com/v1/public/creators/648?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
   end
 
   it '#role - the role this creator took' do

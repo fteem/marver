@@ -13,7 +13,7 @@ describe Marver::CharacterSummary do
 
   it '#resource_uri' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
-    expect(character_summary.resource_uri).to eq "http://gateway.marvel.com/v1/public/characters/1009351?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
+    expect(character_summary.resource_uri).to eq "http://gateway.marvel.com/v1/public/characters/1009351?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
   end
 
   it '#type should always be nil' do
