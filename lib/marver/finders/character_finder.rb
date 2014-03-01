@@ -11,7 +11,8 @@ module Marver
 
     def find(options = {})
       response = @rest_client.get_request(url)
-      Marver::Character.build(response, @credentials)
+      results = Marver::DataContainer.new(response).results
+      Marver::Character.build(results, @credentials)
     end
 
     private
