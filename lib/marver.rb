@@ -11,7 +11,6 @@ require './lib/marver/data_container.rb'
 #Entities
 require './lib/marver/entities/text_object.rb'
 require './lib/marver/entities/image.rb'
-require './lib/marver/entities/entity_list.rb'
 require './lib/marver/entities/url.rb'
 require './lib/marver/entities/key_date.rb'
 require './lib/marver/entities/price.rb'
