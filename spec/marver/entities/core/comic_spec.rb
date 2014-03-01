@@ -16,7 +16,7 @@ describe Marver::Comic do
 
   it '#resource_uri - The canonical URL identifier for this resource.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
-    expect(comic.resource_uri).to eq "http://gateway.marvel.com/v1/public/comics/38524?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+    expect(comic.resource_uri).to eq "http://gateway.marvel.com/v1/public/comics/38524?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
 
   it '#digital_id - The ID of the digital comic representation of this comic. Will be 0 if the comic is not available digitally.' do
@@ -92,7 +92,7 @@ describe Marver::Comic do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(comic.series.class).to eq Array
     expect(comic.series.first.class).to eq Marver::SerieSummary
-    expect(comic.series.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/13896?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+    expect(comic.series.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/13896?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
     expect(comic.series.first.name).to eq "Age of X: Universe (2011)"
   end
 
@@ -114,7 +114,7 @@ describe Marver::Comic do
     expect(comic.characters.class).to eq Array
     expect(comic.characters.first.class).to eq Marver::CharacterSummary
     expect(comic.characters.first.name).to eq "Captain America"
-    expect(comic.characters.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/characters/1009220?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+    expect(comic.characters.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/characters/1009220?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
 
   it '#variants - A list of variant issues for this comic (includes the "original" issue if the current issue is a variant).'
@@ -127,7 +127,7 @@ describe Marver::Comic do
     expect(comic.creators.first.class).to eq Marver::CreatorSummary
     expect(comic.creators.first.name).to eq "Simone Bianchi"
     expect(comic.creators.first.role).to eq "penciller (cover)"
-    expect(comic.creators.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/creators/648?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+    expect(comic.creators.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/creators/648?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
 
   it '#stories - A resource list containing the stories which appear in this comic.' do
@@ -136,7 +136,7 @@ describe Marver::Comic do
     expect(comic.stories.first.class).to eq Marver::StorySummary
     expect(comic.stories.first.name).to eq "Age of X: Avengers (2011) #1"
     expect(comic.stories.first.type).to eq "cover"
-    expect(comic.stories.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/stories/90010?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+    expect(comic.stories.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/stories/90010?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
 
   it '#events - A resource list containing the events in which this comic appears.' do
@@ -145,6 +145,6 @@ describe Marver::Comic do
     expect(comic.events.first.class).to eq Marver::EventSummary
     expect(comic.events.first.name).to eq "Age of X"
     expect(comic.events.first.type).to eq nil
-    expect(comic.events.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/events/303?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+    expect(comic.events.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/events/303?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
 end
