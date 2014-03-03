@@ -1,3 +1,13 @@
+{
+  "code": 200,
+  "status": "Ok",
+  "etag": "c18cb4012df2f93b5fbad42a36b6ded1c57acbf9",
+  "data": {
+    "offset": 0,
+    "limit": 20,
+    "total": 1,
+    "count": 1,
+    "results": [
       {
         "id": 38524,
         "digitalId": 20260,
@@ -228,3 +238,6 @@
           "returned": 1
         }
       }
+    ]
+  }
+}

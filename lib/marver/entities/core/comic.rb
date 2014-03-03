@@ -2,6 +2,19 @@ require './lib/marver.rb'
 
 module Marver
   class Comic
+
+    class << self
+      def build(response, credentials)
+        if response.kind_of?(Array)
+          response.collect do |comic|
+            new(comic, credentials)
+          end
+        else
+          new(response.results, credentials)
+        end
+      end
+    end
+
     attr_reader :id, :digital_id, :title, :issue_number,
                 :variant_description, :description, :isbn,
                 :upc, :diamond_code, :ean, :issn, :format,

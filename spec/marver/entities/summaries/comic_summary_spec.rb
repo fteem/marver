@@ -1,3 +1,4 @@
+require 'spec_helper'
 require './lib/marver/entities/summaries/comic_summary'
 require './lib/marver/credentials'
 
@@ -23,8 +24,41 @@ describe Marver::ComicSummary do
   end
 
   describe '#full' do
+    before :each do
+      Time.stub_chain(:now, :to_i, :to_s).and_return "1"
+      stub_get(comic_summary.resource_uri).to_return(:body => fixture('comic.json'), :headers => {:content_type => 'application/json; charset=utf-8'})
+      @full_comic = comic_summary.full
+    end
+
     it 'fetches the full view of the entity' do
-      pending
+      expect(@full_comic.class).to eq Marver::Comic
+      expect(@full_comic.title).to eq "Age of X: Universe (2011) #1"
+    end
+
+    context 'summary objects' do
+      it 'has list of character summaries' do
+        expect(@full_comic.characters.class).to eq Array
+        expect(@full_comic.characters.first.class).to eq Marver::CharacterSummary
+        expect(@full_comic.characters.first.name).to eq "Captain America"
+      end
+
+      it 'has a list of stories summaries' do
+        expect(@full_comic.stories.class).to eq Array
+        expect(@full_comic.stories.first.class).to eq Marver::StorySummary
+        expect(@full_comic.stories.first.name).to eq "Age of X: Avengers (2011) #1"
+      end
+
+      it 'has a list of events summaries' do
+        expect(@full_comic.events.class).to eq Array
+        expect(@full_comic.events.first.class).to eq Marver::EventSummary
+        expect(@full_comic.events.first.name).to eq "Age of X"
+      end
+
+      it 'has a list of series summaries' do
+        expect(@full_comic.series.class).to eq Array
+        expect(@full_comic.series.first.class).to eq Marver::SerieSummary
+        expect(@full_comic.series.first.name).to eq "Age of X: Universe (2011)"
+      end
     end
   end
 end
