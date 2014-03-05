@@ -2,7 +2,7 @@ require './spec/spec_helper'
 require './lib/marver/entities/core/comic.rb'
 
 describe Marver::Comic do
-  let(:json) { JSON.parse(fixture('comic.json').read) }
+  let(:json) { JSON.parse(fixture('comic.json').read)['data']['results'].first }
   let(:credentials) { Marver::Credentials.new("pub_key", "priv_key") }
   let(:comic) { Marver::Comic.new(json, credentials) }
 
