@@ -1,5 +1,7 @@
 require 'json'
 require 'webmock'
+require './lib/marver.rb'
+
 include WebMock::API
 
 def stub_get(path)

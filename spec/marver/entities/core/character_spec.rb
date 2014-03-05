@@ -1,5 +1,4 @@
 require 'spec_helper'
-require './lib/marver/entities/core/character.rb'
 
 describe Marver::Character do
 

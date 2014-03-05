@@ -1,5 +1,4 @@
-require './spec/spec_helper'
-require './lib/marver/entities/core/comic.rb'
+require 'spec_helper'
 
 describe Marver::Comic do
   let(:json) { JSON.parse(fixture('comic.json').read)['data']['results'].first }

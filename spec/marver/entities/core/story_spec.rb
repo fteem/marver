@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'json'
-require './lib/marver.rb'
 
 describe Marver::Story do
   describe "Attributes" do
