@@ -14,6 +14,8 @@ Marver is (going to be an) easy to use Ruby gem for [Marvel's API](http://develo
 
 
 ##### Entity Finder classes
+Should be implemented within the Marver::Client class.
+
 * CharacterFinder (in progress)
 * SerieFinder
 * StoryFinder
