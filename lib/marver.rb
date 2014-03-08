@@ -7,6 +7,7 @@ require './lib/marver/finders/character_finder.rb'
 require './lib/marver/rest/client.rb'
 require './lib/marver/rest/response.rb'
 require './lib/marver/data_container.rb'
+require './lib/marver/builders/summaries_list_builder.rb'
 
 #Entities
 require './lib/marver/entities/text_object.rb'
@@ -29,3 +30,4 @@ require './lib/marver/entities/core/comic.rb'
 # require './lib/marver/entities/story.rb'
 # require './lib/marver/entities/event.rb'
 # require './lib/marver/entities/serie.rb'
+#

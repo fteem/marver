@@ -20,22 +20,37 @@ module Marver
 
 
 
-    def initialize(response, credentials)
+    def initialize(json, credentials)
       @credentials = credentials
+      @json = json
 
-      @description = response['description']
-      @id = response['id'].to_i
+      @description = json['description']
+      @id = json['id'].to_i
       @credentials = credentials
-      @name = response['name']
-      @resource_uri = "#{response['resourceURI']}?#{@credentials.to_s}"
+      @name = json['name']
+      @resource_uri = "#{json['resourceURI']}?#{@credentials.to_s}"
 
-      @urls = build_urls_list(response)
-      @thumbnail = build_thumbnail_url(response)
+      @urls = build_urls_list(json)
+      @thumbnail = build_thumbnail_url(json)
 
-      @comics = build_comics_list(response)
-      @stories = build_stories_list(response)
-      @events = build_events_list(response)
-      @series = build_series_list(response)
+      build_entities
+    end
+
+    def build_entities
+      %w(comics stories characters events series).each do |entity|
+        if @json.has_key?(entity)
+          self.class.send(:define_method, entity) do
+            @json[entity]['items'].collect do |ent|
+              eval("Marver::#{refined_entity(entity)}Summary").new(ent, @credentials)
+            end
+          end
+        end
+      end
+    end
+
+    def refined_entity(name)
+      return "Story" if name == 'stories'
+      return name[0..-2].capitalize
     end
 
     private
@@ -50,28 +65,5 @@ module Marver
       json['thumbnail']['path'] + '.' + json['thumbnail']['extension']
     end
 
-    def build_comics_list(json)
-      json['comics']['items'].collect do |comic|
-        Marver::ComicSummary.new(comic, @credentials)
-      end
-    end
-
-    def build_stories_list(json)
-      json["stories"]["items"].collect do |story|
-        Marver::StorySummary.new(story, @credentials)
-      end
-    end
-
-    def build_events_list(json)
-      json['events']['items'].collect do |event|
-        Marver::EventSummary.new(event, @credentials)
-      end
-    end
-
-    def build_series_list(json)
-      json['series']['items'].collect do |serie|
-        Marver::SerieSummary.new(serie, @credentials)
-      end
-    end
   end
 end

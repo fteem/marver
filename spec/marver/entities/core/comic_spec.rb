@@ -61,8 +61,9 @@ describe Marver::Comic do
     expect(comic.page_count).to eq 40
   end
 
-  it '#thumbnail - The representative image for this comic.' do
-    expect(comic.thumbnail).to eq "http://i.annihil.us/u/prod/marvel/i/mg/7/70/4f57719ff38c5.jpg"
+  it '#thumbnails - The representative image for this comic.' do
+    expect(comic.thumbnail.class).to eq Marver::Image
+    expect(comic.thumbnail.full_path).to eq "http://i.annihil.us/u/prod/marvel/i/mg/7/70/4f57719ff38c5.jpg"
   end
 
   describe '#dates - A list of key dates for this comic.' do
