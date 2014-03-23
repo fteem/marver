@@ -2,10 +2,9 @@ require 'spec_helper'
 
 describe Marver::Story do
   describe "Attributes" do
-
-    let(:credentials) { Marver::Credentials.new("priv_key", 'pub_key') }
     let(:json) { fixture('story.json').read }
     let(:response) { Marver::REST::Response.new(json) }
+    let(:credentials) { Marver::Credentials.new('pub_key', 'priv_key') }
     let(:data_container) { Marver::DataContainer.new(response) }
     let(:story) { Marver::Story.new(data_container.results, credentials) }
 
@@ -19,7 +18,7 @@ describe Marver::Story do
 
     it "#resource_uri - The canonical URL identifier for this resource." do
       Time.stub_chain(:now, :to_i, :to_s).and_return "1"
-      expect(story.resource_uri).to eq "http://gateway.marvel.com/v1/public/stories/892?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+      expect(story.resource_uri).to eq "http://gateway.marvel.com/v1/public/stories/892?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
     end
 
     it '#description - A short description of the story.' do
@@ -64,7 +63,7 @@ describe Marver::Story do
       Time.stub_chain(:now, :to_i, :to_s).and_return "1"
       expect(story.original_issue.class).to eq Marver::ComicSummary
       expect(story.original_issue.name).to eq "Thor (1998) #81"
-      expect(story.original_issue.resource_uri).to eq "http://gateway.marvel.com/v1/public/comics/715?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+      expect(story.original_issue.resource_uri).to eq "http://gateway.marvel.com/v1/public/comics/715?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
     end
 
   end

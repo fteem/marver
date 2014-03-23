@@ -3,12 +3,7 @@ require './lib/marver/credentials'
 
 describe Marver::SerieSummary do
   let(:credentials) { Marver::Credentials.new('pub_key', 'priv_key') }
-  let(:series_summary) { Marver::SerieSummary.new({ "id" => "123", "resourceURI" => "http://example.net", "name" => "Hulk" },
-                                                        credentials) }
-
-  it '#id' do
-    expect(series_summary.id).to eq 123
-  end
+  let(:series_summary) { Marver::SerieSummary.new({ "resourceURI" => "http://example.net", "name" => "Hulk" }, credentials) }
 
   it '#resource_uri' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"

@@ -33,7 +33,8 @@ describe Marver::Character do
     end
 
     it '#thumbnail - The representative image for this character.' do
-      expect(character.thumbnail).to eq "http://i.annihil.us/u/prod/marvel/i/mg/2/c0/5261a81d0154e.jpg"
+      expect(character.thumbnail.full_path).to eq "http://i.annihil.us/u/prod/marvel/i/mg/2/c0/5261a81d0154e.jpg"
+      expect(character.thumbnail.class).to eq Marver::Image
     end
 
     context 'summary objects' do

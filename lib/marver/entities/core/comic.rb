@@ -3,8 +3,6 @@ require './lib/marver.rb'
 module Marver
   class Comic
 
-    include Marver::SummariesListBuilder
-
     class << self
       def build(response, credentials)
         if response.kind_of?(Array)
@@ -40,44 +38,9 @@ module Marver
       @format = json['format']
       @page_count = json['pageCount']
 
-      build_summary_lists
-      build_supporting_entities
-      build_thumbnail
+      CoreEntitiesBuilder.build!(self)
+      CommonEntitiesBuilder.build!(self)
     end
-
-    # def thumbnail
-    #   Marver::Image.new(@json['thumbnail'])
-    # end
-
-    # def dates
-    #   @dates ||= @json['dates'].collect do |date|
-    #     Marver::KeyDate.new(date)
-    #   end
-    # end
-
-    # def text_objects
-    #   @text_objects ||= @json['textObjects'].collect do |to|
-    #     Marver::TextObject.new(to)
-    #   end
-    # end
-
-    # def urls
-    #   @urls ||= @json['urls'].collect do |url|
-    #     Marver::Url.new(url)
-    #   end
-    # end
-
-    # def images
-    #   @images ||= [@json['images']].compact.flatten(1).collect do |image|
-    #     Marver::Image.new(image)
-    #   end
-    # end
-
-    # def prices
-    #   @prices ||= [@json['prices']].compact.flatten(1).collect do |price|
-    #     Marver::Price.new(price)
-    #   end
-    # end
 
   end
 end
