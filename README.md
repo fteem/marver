@@ -1,17 +1,11 @@
 Marver
 ======
 
-Marver is (going to be an) easy to use Ruby gem for [Marvel's API](http://developer.marvel.com/). It is still in development and any contribution is welcomed.
+Marver is (going to be an) easy to use Ruby gem for [Marvel's API](http://developer.marvel.com/).
+It is **still VERY MUCH in development** and it doesn't really do much right now. Also, any kind of contribution is **welcomed**. 
 
 
 ### TO DO:
-
-##### Write core classes
-* Serie
-* Event
-* Creator
-* More?  
-
 
 ##### Entity Finder classes
 Should be implemented within the Marver::Client class.
@@ -24,9 +18,10 @@ Should be implemented within the Marver::Client class.
 * More?
 
 
-Refactor generation of resource lists for core classes, maybe add a builder module?
-
+##### Entity Builders
+Maybe too much metaprogramming... 
 
 
 #### Author
-Ile Eftimov - [@fteem](http://twitter.com/fteem)
+Ile Eftimov <br/>
+[twitter](http://twitter.com/fteem)  [website](http://eftimov.net)
