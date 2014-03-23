@@ -2,6 +2,8 @@ require './lib/marver.rb'
 
 module Marver
   class Character
+    attr_reader :id, :resource_uri, :description, :urls, :name,
+      :thumbnail, :comics, :stories, :events, :series, :json, :credentials
 
     class << self
       def build(response, credentials)
@@ -14,9 +16,6 @@ module Marver
         end
       end
     end
-
-    attr_reader :id, :resource_uri, :description, :urls, :name,
-      :thumbnail, :comics, :stories, :events, :series, :json, :credentials
 
     def initialize(json, credentials)
       @credentials = credentials

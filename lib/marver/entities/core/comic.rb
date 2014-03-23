@@ -2,6 +2,11 @@ require './lib/marver.rb'
 
 module Marver
   class Comic
+    attr_reader :json, :credentials, :id, :digital_id, :title, :issue_number,
+                :variant_description, :description, :isbn,
+                :upc, :diamond_code, :ean, :issn, :format,
+                :page_count, :resource_uri, :thumbnail, :text_objects
+
 
     class << self
       def build(response, credentials)
@@ -14,11 +19,6 @@ module Marver
         end
       end
     end
-
-    attr_reader :json, :credentials, :id, :digital_id, :title, :issue_number,
-                :variant_description, :description, :isbn,
-                :upc, :diamond_code, :ean, :issn, :format,
-                :page_count, :resource_uri, :thumbnail, :text_objects
 
     def initialize(json, credentials)
       @json = json
