@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    marver (0.0.2)
+      rest-client
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -12,6 +18,7 @@ GEM
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
+    rake (0.9.6)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec (2.14.1)
@@ -32,7 +39,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (~> 1.5)
+  marver!
   pry
-  rest-client
+  rake
   rspec
   webmock
