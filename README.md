@@ -28,6 +28,12 @@ marver.characters.find  # fetches 20 characters
 
 ### TO DO:
 
+#### Summaries can fetch full view objects
+* CreatorSummary
+* EventSummary
+* SerieSummary
+* StorySummary
+
 ##### Entity Finder classes
 Should be implemented within the Marver::Client class.
 
@@ -38,9 +44,8 @@ Should be implemented within the Marver::Client class.
 * EventFinder
 * More?
 
-
 ##### Entity Builders
-Maybe too much metaprogramming...
+Too much metaprogramming, refactor.
 
 
 #### Author
