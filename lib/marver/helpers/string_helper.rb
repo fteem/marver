@@ -1,7 +1,7 @@
 module Marver
   module StringHelper
     def summary_class(entity)
-      constantize("Marver::#{refined(entity)}Summary")
+      constantize("Marver::Summary::#{refined(entity)}")
     end
 
     def common_class(entity)

@@ -1,10 +1,9 @@
 require 'spec_helper'
-require './lib/marver.rb'
 
-describe Marver::CharacterSummary do
+describe Marver::Summary::Character do
   let(:json) { JSON.parse("{ \"id\": \"123\", \"resourceURI\": \"http://gateway.marvel.com/v1/public/characters/1009351\", \"name\": \"Hulk\" }") }
   let(:credentials) { Marver::Credentials.new('priv_key', 'pub_key') }
-  let(:character_summary) { Marver::CharacterSummary.new(json,
+  let(:character_summary) { Marver::Summary::Character.new(json,
                                                          credentials) }
 
   it '#id' do
@@ -39,25 +38,25 @@ describe Marver::CharacterSummary do
     context 'summary objects' do
       it 'has list of comic summaries' do
         expect(@full_character.comics.class).to eq Array
-        expect(@full_character.comics.first.class).to eq Marver::ComicSummary
+        expect(@full_character.comics.first.class).to eq Marver::Summary::Comic
         expect(@full_character.comics.first.name).to eq "Age of Apocalypse (2011) #2 (Avengers Art Appreciation Variant)"
       end
 
       it 'has a list of stories summaries' do
         expect(@full_character.stories.class).to eq Array
-        expect(@full_character.stories.first.class).to eq Marver::StorySummary
+        expect(@full_character.stories.first.class).to eq Marver::Summary::Story
         expect(@full_character.stories.first.name).to eq "Cover #892"
       end
 
       it 'has a list of events summaries' do
         expect(@full_character.events.class).to eq Array
-        expect(@full_character.events.first.class).to eq Marver::EventSummary
+        expect(@full_character.events.first.class).to eq Marver::Summary::Event
         expect(@full_character.events.first.name).to eq "Acts of Vengeance!"
       end
 
       it 'has a list of series summaries' do
         expect(@full_character.series.class).to eq Array
-        expect(@full_character.series.first.class).to eq Marver::SerieSummary
+        expect(@full_character.series.first.class).to eq Marver::Summary::Serie
         expect(@full_character.series.first.name).to eq "Age of Apocalypse (2011 - Present)"
       end
     end

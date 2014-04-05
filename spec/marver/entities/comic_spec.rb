@@ -91,7 +91,7 @@ describe Marver::Comic do
   it '#series - A summary representation of the series to which this comic belongs.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(comic.series.class).to eq Array
-    expect(comic.series.first.class).to eq Marver::SerieSummary
+    expect(comic.series.first.class).to eq Marver::Summary::Serie
     expect(comic.series.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/13896?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
     expect(comic.series.first.name).to eq "Age of X: Universe (2011)"
   end
@@ -112,7 +112,7 @@ describe Marver::Comic do
   it '#characters - A resource list containing the characters which appear in this comic.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(comic.characters.class).to eq Array
-    expect(comic.characters.first.class).to eq Marver::CharacterSummary
+    expect(comic.characters.first.class).to eq Marver::Summary::Character
     expect(comic.characters.first.name).to eq "Captain America"
     expect(comic.characters.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/characters/1009220?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
@@ -124,7 +124,7 @@ describe Marver::Comic do
   it '#creators - A resource list containing the creators associated with this comic.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(comic.creators.class).to eq Array
-    expect(comic.creators.first.class).to eq Marver::CreatorSummary
+    expect(comic.creators.first.class).to eq Marver::Summary::Creator
     expect(comic.creators.first.name).to eq "Simone Bianchi"
     expect(comic.creators.first.role).to eq "penciller (cover)"
     expect(comic.creators.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/creators/648?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
@@ -133,7 +133,7 @@ describe Marver::Comic do
   it '#stories - A resource list containing the stories which appear in this comic.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(comic.stories.class).to eq Array
-    expect(comic.stories.first.class).to eq Marver::StorySummary
+    expect(comic.stories.first.class).to eq Marver::Summary::Story
     expect(comic.stories.first.name).to eq "Age of X: Avengers (2011) #1"
     expect(comic.stories.first.type).to eq "cover"
     expect(comic.stories.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/stories/90010?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
@@ -142,7 +142,7 @@ describe Marver::Comic do
   it '#events - A resource list containing the events in which this comic appears.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(comic.events.class).to eq Array
-    expect(comic.events.first.class).to eq Marver::EventSummary
+    expect(comic.events.first.class).to eq Marver::Summary::Event
     expect(comic.events.first.name).to eq "Age of X"
     expect(comic.events.first.type).to eq nil
     expect(comic.events.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/events/303?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"

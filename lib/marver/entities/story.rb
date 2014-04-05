@@ -27,7 +27,7 @@ module Marver
       @resource_uri = "#{@json['resourceURI']}?#{@credentials.to_s}"
       @description = @json['description']
 
-      @original_issue = Marver::ComicSummary.new(@json['originalIssue'], @credentials)
+      @original_issue = Marver::Summary::Comic.new(@json['originalIssue'], @credentials)
 
       CoreEntitiesBuilder.build!(self)
       CommonEntitiesBuilder.build!(self)

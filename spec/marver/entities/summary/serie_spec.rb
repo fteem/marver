@@ -1,9 +1,8 @@
-require './lib/marver/entities/summaries/serie_summary'
-require './lib/marver/credentials'
+require 'spec_helper'
 
-describe Marver::SerieSummary do
+describe Marver::Summary::Serie do
   let(:credentials) { Marver::Credentials.new('pub_key', 'priv_key') }
-  let(:series_summary) { Marver::SerieSummary.new({ "resourceURI" => "http://example.net", "name" => "Hulk" }, credentials) }
+  let(:series_summary) { Marver::Summary::Serie.new({ "resourceURI" => "http://example.net", "name" => "Hulk" }, credentials) }
 
   it '#resource_uri' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"

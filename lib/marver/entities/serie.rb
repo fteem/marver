@@ -27,8 +27,8 @@ module Marver
       @end_year = @json['endYear']
       @rating = @json['rating']
 
-      @next = Marver::SerieSummary.new(@json['next'], @credentials)
-      @previous = Marver::SerieSummary.new(@json['previous'], @credentials)
+      @next = Marver::Summary::Serie.new(@json['next'], @credentials)
+      @previous = Marver::Summary::Serie.new(@json['previous'], @credentials)
 
       CommonEntitiesBuilder.build!(self)
       CoreEntitiesBuilder.build!(self)

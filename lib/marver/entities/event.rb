@@ -25,8 +25,8 @@ module Marver
       @description = @json['description']
       @start = Date.parse(@json['start'])
       @end = Date.parse(@json['end'])
-      @next = Marver::EventSummary.new(@json['next'], @credentials)
-      @previous = Marver::EventSummary.new(@json['previous'], @credentials)
+      @next = Marver::Summary::Event.new(@json['next'], @credentials)
+      @previous = Marver::Summary::Event.new(@json['previous'], @credentials)
 
       CommonEntitiesBuilder.build!(self)
       CoreEntitiesBuilder.build!(self)

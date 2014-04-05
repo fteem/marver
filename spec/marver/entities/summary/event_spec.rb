@@ -1,9 +1,8 @@
-require './lib/marver/entities/summaries/event_summary'
-require './lib/marver/credentials'
+require 'spec_helper'
 
-describe Marver::EventSummary do
+describe Marver::Summary::Event do
   let(:credentials) { Marver::Credentials.new('priv_key', 'pub_key') }
-  let(:event_summary) { Marver::EventSummary.new({ "id" => "123", "resourceURI" => "http://example.net", "name" => "Breathing" }, credentials) }
+  let(:event_summary) { Marver::Summary::Event.new({ "id" => "123", "resourceURI" => "http://example.net", "name" => "Breathing" }, credentials) }
 
   it '#id' do
     expect(event_summary.id).to eq 123

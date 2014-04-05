@@ -1,10 +1,10 @@
-require './lib/marver.rb'
+require 'spec_helper'
 
-describe Marver::CreatorSummary do
+describe Marver::Summary::Creator do
   before :each do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     credentials = Marver::Credentials.new('priv_key', 'pub_key')
-    @creator = Marver::CreatorSummary.new({
+    @creator = Marver::Summary::Creator.new({
                 "resourceURI" => "http://gateway.marvel.com/v1/public/creators/648", "name" => "Simone Bianchi", "role" => "penciller (cover)"
               }, credentials)
   end

@@ -1,9 +1,8 @@
-require './lib/marver/entities/summaries/story_summary'
-require './lib/marver/credentials'
+require 'spec_helper'
 
-describe Marver::StorySummary do
+describe Marver::Summary::Story do
   let(:credentials) { Marver::Credentials.new('pub_key', 'priv_key') }
-  let(:story_summary) { Marver::StorySummary.new({ "id" => "123", "resourceURI" => "http://example.net", "name" => "Hulk" }, credentials) }
+  let(:story_summary) { Marver::Summary::Story.new({ "id" => "123", "resourceURI" => "http://example.net", "name" => "Hulk" }, credentials) }
 
   it '#id' do
     expect(story_summary.id).to eq 123

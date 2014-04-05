@@ -1,10 +1,8 @@
 require 'spec_helper'
-require './lib/marver/entities/summaries/comic_summary'
-require './lib/marver/credentials'
 
-describe Marver::ComicSummary do
+describe Marver::Summary::Comic do
   let(:credentials) { Marver::Credentials.new('pub_key', 'priv_key') }
-  let(:comic_summary) { Marver::ComicSummary.new({ "id" => "123", "resourceURI" => "http://example.net", "name" => "Hulk" }, credentials) }
+  let(:comic_summary) { Marver::Summary::Comic.new({ "id" => "123", "resourceURI" => "http://example.net", "name" => "Hulk" }, credentials) }
 
   it '#id' do
     expect(comic_summary.id).to eq 123
@@ -38,25 +36,25 @@ describe Marver::ComicSummary do
     context 'summary objects' do
       it 'has list of character summaries' do
         expect(@full_comic.characters.class).to eq Array
-        expect(@full_comic.characters.first.class).to eq Marver::CharacterSummary
+        expect(@full_comic.characters.first.class).to eq Marver::Summary::Character
         expect(@full_comic.characters.first.name).to eq "Captain America"
       end
 
       it 'has a list of stories summaries' do
         expect(@full_comic.stories.class).to eq Array
-        expect(@full_comic.stories.first.class).to eq Marver::StorySummary
+        expect(@full_comic.stories.first.class).to eq Marver::Summary::Story
         expect(@full_comic.stories.first.name).to eq "Age of X: Avengers (2011) #1"
       end
 
       it 'has a list of events summaries' do
         expect(@full_comic.events.class).to eq Array
-        expect(@full_comic.events.first.class).to eq Marver::EventSummary
+        expect(@full_comic.events.first.class).to eq Marver::Summary::Event
         expect(@full_comic.events.first.name).to eq "Age of X"
       end
 
       it 'has a list of series summaries' do
         expect(@full_comic.series.class).to eq Array
-        expect(@full_comic.series.first.class).to eq Marver::SerieSummary
+        expect(@full_comic.series.first.class).to eq Marver::Summary::Serie
         expect(@full_comic.series.first.name).to eq "Age of X: Universe (2011)"
       end
     end

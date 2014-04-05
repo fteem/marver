@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'json'
-require './lib/marver.rb'
 
 describe Marver::Creator do
 
@@ -52,7 +51,7 @@ describe Marver::Creator do
   it '#series - A resource list containing the series which feature work by this creator.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return '1'
     expect(creator.series.class).to eq Array
-    expect(creator.series.first.class).to eq Marver::SerieSummary
+    expect(creator.series.first.class).to eq Marver::Summary::Serie
     expect(creator.series.first.name).to eq "Age of X: Universe (2011)"
     expect(creator.series.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/13896?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
@@ -60,7 +59,7 @@ describe Marver::Creator do
   it '#comics - A resource list containing the stories which feature work by this creator' do
     Time.stub_chain(:now, :to_i, :to_s).and_return '1'
     expect(creator.comics.class).to eq Array
-    expect(creator.comics.first.class).to eq Marver::ComicSummary
+    expect(creator.comics.first.class).to eq Marver::Summary::Comic
     expect(creator.comics.first.name).to eq "Age of X: Universe (2011) #1"
     expect(creator.comics.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/comics/38524?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
@@ -68,7 +67,7 @@ describe Marver::Creator do
   it '#stories - A resource list containing the comics which feature work by this creator.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return '1'
     expect(creator.stories.class).to eq Array
-    expect(creator.stories.first.class).to eq Marver::StorySummary
+    expect(creator.stories.first.class).to eq Marver::Summary::Story
     expect(creator.stories.first.name).to eq "1 of 6 - Evolution"
     expect(creator.stories.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/stories/2243?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
@@ -76,7 +75,7 @@ describe Marver::Creator do
   it '#events - A resource list containing the events which feature work by this creator.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return '1'
     expect(creator.events.class).to eq Array
-    expect(creator.events.first.class).to eq Marver::EventSummary
+    expect(creator.events.first.class).to eq Marver::Summary::Event
     expect(creator.events.first.name).to eq "Age of X"
     expect(creator.events.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/events/303?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end

@@ -1,42 +1,50 @@
 require 'rest_client'
+require 'marver/version'
 
-# Base Classes
-require './lib/marver/client.rb'
-require './lib/marver/version.rb'
-require './lib/marver/credentials.rb'
-require './lib/marver/data_container.rb'
+module Marver
 
-# Finders
-require './lib/marver/finders/character_finder.rb'
+  # Base Classes
+  autoload :Client,                 'marver/client'
+  autoload :Configuration,          'marver/configuration'
+  autoload :Credentials,            'marver/credentials'
+  autoload :DataContainer,          'marver/data_container'
 
-# REST
-require './lib/marver/rest/client.rb'
-require './lib/marver/rest/response.rb'
+  # Finders
+  autoload :CharacterFinder,        'marver/finders/character_finder'
 
-# Helpers & builders
-require './lib/marver/helpers/string_helper.rb'
-require './lib/marver/builders/core_entities_builder.rb'
-require './lib/marver/builders/common_entities_builder.rb'
+  # REST
+  autoload :REST,                   'marver/rest/rest'
 
-# Common Entities
-require './lib/marver/entities/common/text_object.rb'
-require './lib/marver/entities/common/image.rb'
-require './lib/marver/entities/common/url.rb'
-require './lib/marver/entities/common/key_date.rb'
-require './lib/marver/entities/common/price.rb'
+  # Helpers & builders
+  autoload :StringHelper,           'marver/helpers/string_helper'
+  autoload :CoreEntitiesBuilder,    'marver/builders/core_entities_builder'
+  autoload :CommonEntitiesBuilder,  'marver/builders/common_entities_builder'
 
-# Core Entities
-require './lib/marver/entities/core/event.rb'
-require './lib/marver/entities/core/serie.rb'
-require './lib/marver/entities/core/story.rb'
-require './lib/marver/entities/core/character.rb'
-require './lib/marver/entities/core/creator.rb'
-require './lib/marver/entities/core/comic.rb'
+  # Common Entities
+  autoload :TextObject,   'marver/entities/text_object'
+  autoload :Image,        'marver/entities/image'
+  autoload :Url,          'marver/entities/url'
+  autoload :KeyDate,      'marver/entities/key_date'
+  autoload :Price,        'marver/entities/price'
 
-# Summary Entities
-require './lib/marver/entities/summaries/character_summary.rb'
-require './lib/marver/entities/summaries/comic_summary.rb'
-require './lib/marver/entities/summaries/story_summary.rb'
-require './lib/marver/entities/summaries/event_summary.rb'
-require './lib/marver/entities/summaries/serie_summary.rb'
-require './lib/marver/entities/summaries/creator_summary.rb'
+  # Core Entities
+  autoload :Event,     'marver/entities/event'
+  autoload :Serie,     'marver/entities/serie'
+  autoload :Story,     'marver/entities/story'
+  autoload :Character, 'marver/entities/character'
+  autoload :Creator,   'marver/entities/creator'
+  autoload :Comic,     'marver/entities/comic'
+
+  # Summary Entities
+  autoload :Summary,    'marver/entities/summary'
+
+  class << self
+    attr_accessor :configuration
+
+    def configure
+      self.configuration ||= Configuration.new
+      yield(configuration)
+    end
+  end
+end
+

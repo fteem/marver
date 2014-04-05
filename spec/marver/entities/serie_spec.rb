@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'json'
-require './lib/marver.rb'
 
 describe Marver::Serie do
 
@@ -45,7 +44,7 @@ describe Marver::Serie do
   it '#comics - A resource list containing comics in this series.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(serie.comics.class).to eq Array
-    expect(serie.comics.first.class).to eq Marver::ComicSummary
+    expect(serie.comics.first.class).to eq Marver::Summary::Comic
     expect(serie.comics.first.name).to eq "Daredevil (1963)"
     expect(serie.comics.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/comics/8072?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
@@ -53,7 +52,7 @@ describe Marver::Serie do
   it '#stories - A resource list containing stories which occur in comics in this series.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(serie.stories.class).to eq Array
-    expect(serie.stories.first.class).to eq Marver::StorySummary
+    expect(serie.stories.first.class).to eq Marver::Summary::Story
     expect(serie.stories.first.name).to eq "Life Be Not Proud!"
     expect(serie.stories.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/stories/15722?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
     expect(serie.stories.first.type).to eq "interiorStory"
@@ -62,7 +61,7 @@ describe Marver::Serie do
   it '#events - A resource list containing events which take place in comics in this series.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(serie.events.class).to eq Array
-    expect(serie.events.first.class).to eq Marver::EventSummary
+    expect(serie.events.first.class).to eq Marver::Summary::Event
     expect(serie.events.first.name).to eq "Acts of Vengeance!"
     expect(serie.events.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/events/116?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
@@ -70,7 +69,7 @@ describe Marver::Serie do
   it '#characters - A resource list containing characters which appear in comics in this series.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(serie.characters.class).to eq Array
-    expect(serie.characters.first.class).to eq Marver::CharacterSummary
+    expect(serie.characters.first.class).to eq Marver::Summary::Character
     expect(serie.characters.first.name).to eq "Beast"
     expect(serie.characters.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/characters/1009175?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
@@ -78,7 +77,7 @@ describe Marver::Serie do
   it '#creators - A resource list of creators whose work appears in comics in this series.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(serie.creators.class).to eq Array
-    expect(serie.creators.first.class).to eq Marver::CreatorSummary
+    expect(serie.creators.first.class).to eq Marver::Summary::Creator
     expect(serie.creators.first.name).to eq "Mark Bagley"
     expect(serie.creators.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/creators/87?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
     expect(serie.creators.first.role).to eq "penciller (cover)"
@@ -86,13 +85,13 @@ describe Marver::Serie do
 
   it '#next - A summary representation of the series which follows this series.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
-    expect(serie.next.class).to eq Marver::SerieSummary
+    expect(serie.next.class).to eq Marver::Summary::Serie
     expect(serie.next.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/449?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
 
   it '#previous - A summary representation of the series which preceded this series.' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
-    expect(serie.previous.class).to eq Marver::SerieSummary
+    expect(serie.previous.class).to eq Marver::Summary::Serie
     expect(serie.previous.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/449?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
   end
 
