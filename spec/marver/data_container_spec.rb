@@ -1,7 +1,7 @@
 require './lib/marver.rb'
 
 describe Marver::DataContainer do
-  let(:response) { Marver::REST::Response.new("{ \"code\": 200, \"status\": \"Ok\", \"etag\": \"ec5ab621cf3760eb6f2df2e6270ccb56c6debfb7\", \"data\": { \"offset\": 0, \"limit\": 20, \"total\": 1, \"count\": 1, \"results\": [1]}}") }
+  let(:response) { Marver::API::Response.new("{ \"code\": 200, \"status\": \"Ok\", \"etag\": \"ec5ab621cf3760eb6f2df2e6270ccb56c6debfb7\", \"data\": { \"offset\": 0, \"limit\": 20, \"total\": 1, \"count\": 1, \"results\": [1]}}") }
 
   let(:data_container) { Marver::DataContainer.new(response) }
 

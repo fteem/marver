@@ -1,6 +1,4 @@
 require 'spec_helper'
-require './lib/marver/rest/client.rb'
-require './lib/marver.rb'
 
 describe Marver::Client do
   let(:client) { Marver::Client.new("private_key", "public_key") }

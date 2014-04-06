@@ -3,11 +3,9 @@ module Marver
     class Serie
       attr_reader :id, :name, :resource_uri, :type
 
-      def initialize(json, credentials)
-        @credentials = credentials
-
+      def initialize(json)
         @name = json['name']
-        @resource_uri = "#{json['resourceURI']}?#{@credentials.to_s}"
+        @resource_uri = json['resourceURI']
       end
 
     end

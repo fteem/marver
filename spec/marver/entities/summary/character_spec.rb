@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe Marver::Summary::Character do
   let(:json) { JSON.parse("{ \"id\": \"123\", \"resourceURI\": \"http://gateway.marvel.com/v1/public/characters/1009351\", \"name\": \"Hulk\" }") }
-  let(:credentials) { Marver::Credentials.new('priv_key', 'pub_key') }
-  let(:character_summary) { Marver::Summary::Character.new(json,
-                                                         credentials) }
+  let(:character_summary) { Marver::Summary::Character.new(json) }
 
   it '#id' do
     expect(character_summary.id).to eq 123
@@ -12,7 +10,7 @@ describe Marver::Summary::Character do
 
   it '#resource_uri' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
-    expect(character_summary.resource_uri).to eq "http://gateway.marvel.com/v1/public/characters/1009351?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+    expect(character_summary.resource_uri).to eq "http://gateway.marvel.com/v1/public/characters/1009351"
   end
 
   it '#type should always be nil' do

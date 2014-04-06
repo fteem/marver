@@ -4,10 +4,9 @@ require 'json'
 describe Marver::Creator do
 
   let(:json) { fixture('creator.json').read }
-  let(:response) { Marver::REST::Response.new(json) }
-  let(:credentials) { Marver::Credentials.new('pub_key', 'priv_key') }
+  let(:response) { Marver::API::Response.new(json) }
   let(:data_container) { Marver::DataContainer.new(response) }
-  let(:creator) { Marver::Creator.new(data_container.results, credentials) }
+  let(:creator) { Marver::Creator.new(data_container.results) }
 
   it '#id - The unique ID of the creator resource.' do
     expect(creator.id).to eq 648
@@ -53,7 +52,7 @@ describe Marver::Creator do
     expect(creator.series.class).to eq Array
     expect(creator.series.first.class).to eq Marver::Summary::Serie
     expect(creator.series.first.name).to eq "Age of X: Universe (2011)"
-    expect(creator.series.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/13896?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
+    expect(creator.series.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/13896"
   end
 
   it '#comics - A resource list containing the stories which feature work by this creator' do
@@ -61,7 +60,7 @@ describe Marver::Creator do
     expect(creator.comics.class).to eq Array
     expect(creator.comics.first.class).to eq Marver::Summary::Comic
     expect(creator.comics.first.name).to eq "Age of X: Universe (2011) #1"
-    expect(creator.comics.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/comics/38524?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
+    expect(creator.comics.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/comics/38524"
   end
 
   it '#stories - A resource list containing the comics which feature work by this creator.' do
@@ -69,7 +68,7 @@ describe Marver::Creator do
     expect(creator.stories.class).to eq Array
     expect(creator.stories.first.class).to eq Marver::Summary::Story
     expect(creator.stories.first.name).to eq "1 of 6 - Evolution"
-    expect(creator.stories.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/stories/2243?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
+    expect(creator.stories.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/stories/2243"
   end
 
   it '#events - A resource list containing the events which feature work by this creator.' do
@@ -77,6 +76,6 @@ describe Marver::Creator do
     expect(creator.events.class).to eq Array
     expect(creator.events.first.class).to eq Marver::Summary::Event
     expect(creator.events.first.name).to eq "Age of X"
-    expect(creator.events.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/events/303?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
+    expect(creator.events.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/events/303"
   end
 end

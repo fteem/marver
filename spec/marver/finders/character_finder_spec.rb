@@ -1,8 +1,7 @@
 require './lib/marver/finders/character_finder.rb'
 
 describe Marver::CharacterFinder do
-  let(:credentials) { double(Marver::Credentials, class: Marver::Credentials) }
-  let(:finder) { Marver::CharacterFinder.new(credentials) }
+  let(:finder) { Marver::CharacterFinder.new }
 
   describe '#find' do
     context 'no arguments' do

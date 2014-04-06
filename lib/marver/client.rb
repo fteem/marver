@@ -5,7 +5,6 @@ module Marver
     attr_reader :characters
 
     def initialize(private_key, public_key)
-      @credentials = Marver::Credentials.new(private_key, public_key)
       @characters = Marver::CharacterFinder.new(@credentials)
     end
 

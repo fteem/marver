@@ -5,17 +5,16 @@ module Marver
     class Comic
       attr_reader :id, :name, :resource_uri, :type
 
-      def initialize(json, credentials)
-        @credentials = credentials
+      def initialize(json)
         @name = json['name']
-        @resource_uri = "#{json['resourceURI']}?#{@credentials.to_s}"
+        @resource_uri = json['resourceURI']
         @id = json['id'].to_i
       end
 
       def full
-        response = Marver::REST::Response.new(RestClient.get(@resource_uri))
+        response = Marver::API::Response.new(RestClient.get(@resource_uri))
         data = Marver::DataContainer.new(response)
-        Marver::Comic.build(data, @credentials)
+        Marver::Comic.build(data)
       end
     end
   end

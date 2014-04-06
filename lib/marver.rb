@@ -6,14 +6,13 @@ module Marver
   # Base Classes
   autoload :Client,                 'marver/client'
   autoload :Configuration,          'marver/configuration'
-  autoload :Credentials,            'marver/credentials'
   autoload :DataContainer,          'marver/data_container'
 
   # Finders
   autoload :CharacterFinder,        'marver/finders/character_finder'
 
-  # REST
-  autoload :REST,                   'marver/rest/rest'
+  # API
+  autoload :API,                   'marver/api'
 
   # Helpers & builders
   autoload :StringHelper,           'marver/helpers/string_helper'

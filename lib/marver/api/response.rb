@@ -1,8 +1,7 @@
 require 'json'
-require './lib/marver.rb'
 
 module Marver
-  module REST
+  module API
     class Response
       attr_reader :code, :status, :data, :results
 

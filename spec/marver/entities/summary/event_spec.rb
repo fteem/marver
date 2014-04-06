@@ -1,16 +1,14 @@
 require 'spec_helper'
 
 describe Marver::Summary::Event do
-  let(:credentials) { Marver::Credentials.new('priv_key', 'pub_key') }
-  let(:event_summary) { Marver::Summary::Event.new({ "id" => "123", "resourceURI" => "http://example.net", "name" => "Breathing" }, credentials) }
+  let(:event_summary) { Marver::Summary::Event.new({ "id" => "123", "resourceURI" => "http://example.net", "name" => "Breathing" }) }
 
   it '#id' do
     expect(event_summary.id).to eq 123
   end
 
   it '#resource_uri' do
-    Time.stub_chain(:now, :to_i, :to_s).and_return "1"
-    expect(event_summary.resource_uri).to eq "http://example.net?ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+    expect(event_summary.resource_uri).to eq "http://example.net"
   end
 
   it '#type should always be nil' do

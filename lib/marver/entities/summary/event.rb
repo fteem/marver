@@ -3,11 +3,10 @@ module Marver
     class Event
       attr_reader :id, :name, :resource_uri, :type
 
-      def initialize(json, credentials)
+      def initialize(json)
         @id = json['id'].to_i
-        @credentials = credentials
         @name = json['name']
-        @resource_uri = "#{json['resourceURI']}?#{@credentials.to_s}"
+        @resource_uri = json['resourceURI']
         @type = json['type'] || nil
       end
 

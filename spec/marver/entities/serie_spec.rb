@@ -4,10 +4,9 @@ require 'json'
 describe Marver::Serie do
 
   let(:json) { fixture('serie.json').read }
-  let(:response) { Marver::REST::Response.new(json) }
-  let(:credentials) { Marver::Credentials.new('pub_key', 'priv_key') }
+  let(:response) { Marver::API::Response.new(json) }
   let(:data_container) { Marver::DataContainer.new(response) }
-  let(:serie) { Marver::Serie.new(data_container.results, credentials) }
+  let(:serie) { Marver::Serie.new(data_container.results) }
 
   it '#id - The unique ID of the series resource.' do
     expect(serie.id).to eq 2002
@@ -42,57 +41,50 @@ describe Marver::Serie do
   end
 
   it '#comics - A resource list containing comics in this series.' do
-    Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(serie.comics.class).to eq Array
     expect(serie.comics.first.class).to eq Marver::Summary::Comic
     expect(serie.comics.first.name).to eq "Daredevil (1963)"
-    expect(serie.comics.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/comics/8072?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
+    expect(serie.comics.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/comics/8072"
   end
 
   it '#stories - A resource list containing stories which occur in comics in this series.' do
-    Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(serie.stories.class).to eq Array
     expect(serie.stories.first.class).to eq Marver::Summary::Story
     expect(serie.stories.first.name).to eq "Life Be Not Proud!"
-    expect(serie.stories.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/stories/15722?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
+    expect(serie.stories.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/stories/15722"
     expect(serie.stories.first.type).to eq "interiorStory"
   end
 
   it '#events - A resource list containing events which take place in comics in this series.' do
-    Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(serie.events.class).to eq Array
     expect(serie.events.first.class).to eq Marver::Summary::Event
     expect(serie.events.first.name).to eq "Acts of Vengeance!"
-    expect(serie.events.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/events/116?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
+    expect(serie.events.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/events/116"
   end
 
   it '#characters - A resource list containing characters which appear in comics in this series.' do
-    Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(serie.characters.class).to eq Array
     expect(serie.characters.first.class).to eq Marver::Summary::Character
     expect(serie.characters.first.name).to eq "Beast"
-    expect(serie.characters.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/characters/1009175?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
+    expect(serie.characters.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/characters/1009175"
   end
 
   it '#creators - A resource list of creators whose work appears in comics in this series.' do
-    Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(serie.creators.class).to eq Array
     expect(serie.creators.first.class).to eq Marver::Summary::Creator
     expect(serie.creators.first.name).to eq "Mark Bagley"
-    expect(serie.creators.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/creators/87?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
+    expect(serie.creators.first.resource_uri).to eq "http://gateway.marvel.com/v1/public/creators/87"
     expect(serie.creators.first.role).to eq "penciller (cover)"
   end
 
   it '#next - A summary representation of the series which follows this series.' do
-    Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(serie.next.class).to eq Marver::Summary::Serie
-    expect(serie.next.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/449?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
+    expect(serie.next.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/449"
   end
 
   it '#previous - A summary representation of the series which preceded this series.' do
-    Time.stub_chain(:now, :to_i, :to_s).and_return "1"
     expect(serie.previous.class).to eq Marver::Summary::Serie
-    expect(serie.previous.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/449?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
+    expect(serie.previous.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/449"
   end
 
   it "#title - Serie's title" do

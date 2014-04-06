@@ -8,7 +8,7 @@ module Marver
     end
 
     def find(options = {})
-      response = Marver::REST::Client.get("#{url}&#{qs}")
+      response = Marver::API::Client.get("#{url}&#{qs}")
       results = Marver::DataContainer.new(response).results
       Marver::Character.build(results, @credentials)
     end

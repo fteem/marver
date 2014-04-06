@@ -15,7 +15,7 @@ module Marver
 
           object.class.send(:define_method, entity) do
             entity_items.collect do |ent|
-              klass.new(ent, object.credentials)
+              klass.new(ent)
             end
           end
         end

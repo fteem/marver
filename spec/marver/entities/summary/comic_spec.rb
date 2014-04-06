@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Marver::Summary::Comic do
-  let(:credentials) { Marver::Credentials.new('pub_key', 'priv_key') }
-  let(:comic_summary) { Marver::Summary::Comic.new({ "id" => "123", "resourceURI" => "http://example.net", "name" => "Hulk" }, credentials) }
+  let(:comic_summary) { Marver::Summary::Comic.new({ "id" => "123", "resourceURI" => "http://example.net", "name" => "Hulk" }) }
 
   it '#id' do
     expect(comic_summary.id).to eq 123
@@ -10,7 +9,7 @@ describe Marver::Summary::Comic do
 
   it '#resource_uri' do
     Time.stub_chain(:now, :to_i, :to_s).and_return "1"
-    expect(comic_summary.resource_uri).to eq "http://example.net?ts=1&apikey=priv_key&hash=668dea517c974c12d8d0193cf2d8f7f7"
+    expect(comic_summary.resource_uri).to eq "http://example.net"
   end
 
   it '#type should always be nil' do

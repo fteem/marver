@@ -1,23 +1,22 @@
 module Marver
   class Serie
-    attr_reader :json, :credentials, :id, :title, :resource_uri, :description,
+    attr_reader :json, :id, :title, :resource_uri, :description,
                 :start_year, :end_year, :rating, :next, :previous
 
     class << self
-      def build(response, credentials)
+      def build(response)
         if response.kind_of?(Array)
           response.collect do |serie|
-            Marver::Serie.new(serie, credentials)
+            Marver::Serie.new(serie)
           end
         else
-          new(response.results, credentials)
+          new(response.results)
         end
       end
     end
 
-    def initialize(json, credentials)
+    def initialize(json)
       @json = json
-      @credentials = credentials
 
       @id = @json['id']
       @title = @json['title']
@@ -27,8 +26,8 @@ module Marver
       @end_year = @json['endYear']
       @rating = @json['rating']
 
-      @next = Marver::Summary::Serie.new(@json['next'], @credentials)
-      @previous = Marver::Summary::Serie.new(@json['previous'], @credentials)
+      @next = Marver::Summary::Serie.new(@json['next'])
+      @previous = Marver::Summary::Serie.new(@json['previous'])
 
       CommonEntitiesBuilder.build!(self)
       CoreEntitiesBuilder.build!(self)

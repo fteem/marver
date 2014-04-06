@@ -1,5 +1,5 @@
 module Marver
-  module REST
+  module API
     class Error
       attr_reader :code, :status
 

@@ -1,23 +1,22 @@
 module Marver
   class Creator
     attr_reader :id, :first_name, :middle_name, :last_name, :full_name,
-                :suffix, :resource_uri, :json, :credentials
+                :suffix, :resource_uri, :json
 
     class << self
-      def build(response, credentials)
+      def build(response)
         if response.kind_of?(Array)
           response.collect do |creator|
-            Marver::Creator.new(creator, credentials)
+            Marver::Creator.new(creator)
           end
         else
-          new(response.results, credentials)
+          new(response.results)
         end
       end
     end
 
-    def initialize(json, credentials)
+    def initialize(json)
       @json = json
-      @credentials = credentials
 
       @id = @json['id']
       @first_name = @json['firstName']
