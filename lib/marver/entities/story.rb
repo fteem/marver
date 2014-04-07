@@ -2,8 +2,10 @@ require './lib/marver.rb'
 
 module Marver
   class Story
-    attr_reader :id, :json, :title, :type, :resource_uri, :description, :thumbnail,
-                :comics, :series, :events, :characters, :creators, :original_issue
+    include Marver::Summarizable
+    include Marver::Commonable
+
+    attr_reader :json, :title, :type, :resource_uri, :description, :thumbnail, :original_issue
 
     class << self
       def build(response)
@@ -26,9 +28,6 @@ module Marver
       @description = @json['description']
 
       @original_issue = Marver::Summary::Comic.new(@json['originalIssue'])
-
-      CoreEntitiesBuilder.build!(self)
-      CommonEntitiesBuilder.build!(self)
     end
   end
 end

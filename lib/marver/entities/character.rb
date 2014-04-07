@@ -2,8 +2,10 @@ require './lib/marver.rb'
 
 module Marver
   class Character
-    attr_reader :id, :resource_uri, :description, :urls, :name,
-      :thumbnail, :comics, :stories, :events, :series, :json
+    include Marver::Summarizable
+    include Marver::Commonable
+
+    attr_reader :json, :id, :resource_uri, :description, :name
 
     class << self
       def build(response)
@@ -21,12 +23,10 @@ module Marver
       @json = json
 
       @description = json['description']
+
       @id = json['id'].to_i
       @name = json['name']
       @resource_uri = json['resourceURI']
-
-      CoreEntitiesBuilder.build!(self)
-      CommonEntitiesBuilder.build!(self)
     end
 
   end

@@ -16,8 +16,6 @@ module Marver
 
   # Helpers & builders
   autoload :StringHelper,           'marver/helpers/string_helper'
-  autoload :CoreEntitiesBuilder,    'marver/builders/core_entities_builder'
-  autoload :CommonEntitiesBuilder,  'marver/builders/common_entities_builder'
 
   # Common Entities
   autoload :TextObject,   'marver/entities/text_object'
@@ -36,6 +34,10 @@ module Marver
 
   # Summary Entities
   autoload :Summary,    'marver/entities/summary'
+
+  autoload :Summarizable, 'marver/entities/summarizable'
+  autoload :Commonable,   'marver/entities/commonable'
+
 
   class << self
     attr_accessor :configuration

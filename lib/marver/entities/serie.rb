@@ -1,5 +1,8 @@
 module Marver
   class Serie
+    include Marver::Summarizable
+    include Marver::Commonable
+
     attr_reader :json, :id, :title, :resource_uri, :description,
                 :start_year, :end_year, :rating, :next, :previous
 
@@ -28,9 +31,6 @@ module Marver
 
       @next = Marver::Summary::Serie.new(@json['next'])
       @previous = Marver::Summary::Serie.new(@json['previous'])
-
-      CommonEntitiesBuilder.build!(self)
-      CoreEntitiesBuilder.build!(self)
     end
   end
 end

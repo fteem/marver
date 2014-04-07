@@ -1,5 +1,8 @@
 module Marver
   class Event
+    include Marver::Summarizable
+    include Marver::Commonable
+
     attr_reader :json, :title, :resource_uri,
                 :description, :start, :end, :next, :previous
 
@@ -26,9 +29,6 @@ module Marver
       @end = Date.parse(@json['end'])
       @next = Marver::Summary::Event.new(@json['next'])
       @previous = Marver::Summary::Event.new(@json['previous'])
-
-      CommonEntitiesBuilder.build!(self)
-      CoreEntitiesBuilder.build!(self)
     end
   end
 end

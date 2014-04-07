@@ -1,6 +1,3 @@
-1. Fix namespacing
-  - Marver::CharacterSummary -> Marver::Summary:Character
-2. Fix grouping of classes by directory. Should be in context of namespacing.
-3. Drop usage of Marver::Credentials. Use Marver.configuration.
-4. Build objects when data is parsed.
-5. Improve Marver::REST::Client by returning parsed JSON.
+1. Fix grouping of classes by directory. Should be in context of namespacing.
+3. Build objects when data is parsed.
+4. Improve Marver::REST::Client by returning parsed JSON.

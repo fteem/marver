@@ -2,11 +2,13 @@ require './lib/marver.rb'
 
 module Marver
   class Comic
+    include Marver::Summarizable
+    include Marver::Commonable
+
     attr_reader :json, :id, :digital_id, :title, :issue_number,
                 :variant_description, :description, :isbn,
                 :upc, :diamond_code, :ean, :issn, :format,
-                :page_count, :resource_uri, :thumbnail, :text_objects
-
+                :page_count, :resource_uri
 
     class << self
       def build(response)
@@ -36,9 +38,6 @@ module Marver
       @issn = json['issn']
       @format = json['format']
       @page_count = json['pageCount']
-
-      CoreEntitiesBuilder.build!(self)
-      CommonEntitiesBuilder.build!(self)
     end
 
   end
