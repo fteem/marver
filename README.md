@@ -21,7 +21,12 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-marver = Marver::Client.new('your_private_api_key', 'your_public_api_key')
+Marver.configure do |config|
+  config.public_key = 'your_public_key'
+  config.private_key = 'your_private_key'
+end
+
+marver = Marver::Client.new
 marver.characters.find  # fetches 20 characters
 ```
 
