@@ -44,10 +44,6 @@ Should be implemented within the Marver::Client class.
 * EventFinder
 * More?
 
-##### Entity Builders
-Too much metaprogramming, refactor.
-
-
 #### Author
 Ile Eftimov <br/>
 [twitter](http://twitter.com/fteem)  [website](http://eftimov.net)
