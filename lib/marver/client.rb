@@ -4,8 +4,8 @@ module Marver
   class Client
     attr_reader :characters
 
-    def initialize(private_key, public_key)
-      @characters = Marver::CharacterFinder.new(@credentials)
+    def initialize
+      @characters = Marver::CharacterFinder.new
     end
 
   end

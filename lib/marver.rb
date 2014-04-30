@@ -37,6 +37,7 @@ module Marver
 
   autoload :Summarizable, 'marver/entities/summarizable'
   autoload :Commonable,   'marver/entities/commonable'
+  autoload :Queryable,   'marver/entities/queryable'
 
 
   class << self

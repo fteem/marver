@@ -2,21 +2,10 @@ require './lib/marver.rb'
 
 module Marver
   class CharacterFinder
-
-    def initialize(credentials)
-      @credentials = credentials
-    end
-
     def find(options = {})
-      response = Marver::API::Client.get("#{url}&#{qs}")
+      response = Marver::API::Client.get(:characters, options)
       results = Marver::DataContainer.new(response).results
-      Marver::Character.build(results, @credentials)
-    end
-
-    private
-
-    def url
-      "characters?#{@credentials.to_s}"
+      Marver::Character.build(results)
     end
   end
 end

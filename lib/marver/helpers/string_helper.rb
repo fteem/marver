@@ -31,6 +31,6 @@ module Marver
       end
       constant
     end
-  end
 
+  end
 end

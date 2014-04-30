@@ -26,8 +26,9 @@ Marver.configure do |config|
   config.private_key = 'your_private_key'
 end
 
-marver = Marver::Client.new
-marver.characters.find  # fetches 20 characters
+client = Marver::Client.new
+client.characters.find({ name: 'Hulk' }) # Returns Hulk
+client.serie.find({ name: 'The Avengers' }) # Returns The Avengers
 ```
 
 

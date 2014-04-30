@@ -11,7 +11,7 @@ describe Marver::API::Response do
       config.private_key = 'priv_key'
     end
 
-    @response = Marver::API::Client.get('characters')
+    @response = Marver::API::Client.get(:characters, {})
   end
 
   it 'has a response code ' do

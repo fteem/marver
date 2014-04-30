@@ -4,17 +4,20 @@ require 'digest/md5'
 module Marver
   module API
     class Client
+      include Marver::Queryable
+
       API_VERSION = "v1"
       API_ENDPOINT = "http://gateway.marvel.com"
 
       class << self
-        def get(query_string)
-          new.get_request(query_string)
+        def get(entity, options)
+          qs = options.empty? ? "" : hash_to_query_string(options)
+          new.get_request(entity, qs)
         end
       end
 
-      def get_request(query_string)
-        url = endpoint + query_string + credentials
+      def get_request(entity, query_string)
+        url = endpoint + "#{entity.to_s}" + query_string + credentials
         Marver::API::Response.new(RestClient.get(url))
       end
 
