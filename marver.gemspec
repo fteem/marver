@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Marver::VERSION
   spec.authors       = ["Ile Eftimov"]
   spec.email         = ["ileeftimov@gmail.com"]
-  spec.summary       = %q{Marver, Marvel's API gem}
-  spec.description   = %q{Marver, Marvel's API gem}
-  spec.homepage      = ""
+  spec.summary       = %q{Marver, gem for  Marvel's API}
+  spec.description   = %q{Marver is a gem that provides a wrapper to Marvel's API}
+  spec.homepage      = "http://github.com/fteem/marver"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

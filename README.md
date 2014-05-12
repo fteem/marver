@@ -1,8 +1,8 @@
 Marver
 ======
 
-Marver is (going to be an) easy to use Ruby gem for [Marvel's API](http://developer.marvel.com/).
-It is **still VERY MUCH in development** and it doesn't really do much right now. Also, any kind of contribution is **welcomed**.
+Marver is an easy to use Ruby gem for [Marvel's API](http://developer.marvel.com/).
+It is still **in development**, has some basic functionality, but it's still work-in-progress.
 
 ## Installation
 
@@ -67,3 +67,5 @@ Should be implemented within the Marver::Client class.
 #### Author
 Ile Eftimov <br/>
 [twitter](http://twitter.com/fteem)  [website](http://eftimov.net)
+
+Any kind of contribution is welcomed & encouraged :)
