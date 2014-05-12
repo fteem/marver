@@ -8,13 +8,13 @@ module Marver
     attr_reader :json, :id, :resource_uri, :description, :name
 
     class << self
-      def build(response)
-        if response.kind_of?(Array)
-          response.collect do |character|
+      def build(results)
+        if results.kind_of?(Array)
+          results.collect do |character|
             Marver::Character.new(character)
           end
         else
-          new(response.results)
+          new(results)
         end
       end
     end

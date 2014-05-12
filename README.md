@@ -31,14 +31,28 @@ client.characters.find({ name: 'Hulk' }) # Returns Hulk
 client.serie.find({ name: 'The Avengers' }) # Returns The Avengers
 ```
 
+Also, you can inspect summary (trimmed) objects of the associated entities to one entity.
+
+```ruby
+Marver.configure do |config|
+  config.public_key = 'your_public_key'
+  config.private_key = 'your_private_key'
+end
+
+client = Marver::Client.new
+hulk = client.characters.find({ name: 'Hulk' })
+hulk.comics  # Returns an array of comics summaries
+hulk.stories # Returns an array of stories where Hulk appears
+```
+
+A summary object can also morph into a "full view" object.
+
+```ruby
+comic = hulk.comics.first  # Take first comic where Hulk appears
+comic.full # This will issue an API call and grab the full object with all data for that comic
+```
 
 ### TO DO:
-
-#### Summaries can fetch full view objects
-* CreatorSummary
-* EventSummary
-* SerieSummary
-* StorySummary
 
 ##### Entity Finder classes
 Should be implemented within the Marver::Client class.

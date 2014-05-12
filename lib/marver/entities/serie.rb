@@ -7,13 +7,13 @@ module Marver
                 :start_year, :end_year, :rating, :next, :previous
 
     class << self
-      def build(response)
-        if response.kind_of?(Array)
-          response.collect do |serie|
+      def build(results)
+        if results.kind_of?(Array)
+          results.collect do |serie|
             Marver::Serie.new(serie)
           end
         else
-          new(response.results)
+          new(results)
         end
       end
     end
@@ -32,5 +32,6 @@ module Marver
       @next = Marver::Summary::Serie.new(@json['next'])
       @previous = Marver::Summary::Serie.new(@json['previous'])
     end
+
   end
 end

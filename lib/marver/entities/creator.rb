@@ -7,13 +7,13 @@ module Marver
                 :suffix, :resource_uri, :json
 
     class << self
-      def build(response)
-        if response.kind_of?(Array)
-          response.collect do |creator|
+      def build(results)
+        if results.kind_of?(Array)
+          results.collect do |creator|
             Marver::Creator.new(creator)
           end
         else
-          new(response.results)
+          new(results)
         end
       end
     end

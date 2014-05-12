@@ -94,4 +94,5 @@ describe Marver::Serie do
   it "#resource_uri - Full cannonical URL of the entity" do
     expect(serie.resource_uri).to eq "http://gateway.marvel.com/v1/public/series/2002"
   end
+
 end

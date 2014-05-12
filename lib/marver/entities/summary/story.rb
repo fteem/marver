@@ -10,6 +10,11 @@ module Marver
         @id = json['id'].to_i
       end
 
+      def full
+        response = Marver::API::Response.new(RestClient.get(@resource_uri))
+        data = Marver::DataContainer.new(response).results
+        Marver::Story.build(data)
+      end
     end
   end
 end

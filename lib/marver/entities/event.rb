@@ -7,13 +7,13 @@ module Marver
                 :description, :start, :end, :next, :previous
 
     class << self
-      def build(response)
-        if response.kind_of?(Array)
-          response.collect do |event|
+      def build(results)
+        if results.kind_of?(Array)
+          results.collect do |event|
             Marver::Event.new(event)
           end
         else
-          new(response.results)
+          new(results)
         end
       end
     end

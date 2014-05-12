@@ -8,6 +8,12 @@ module Marver
         @resource_uri = json['resourceURI']
         @role = json['role']
       end
+
+      def full
+        response = Marver::API::Response.new(RestClient.get(@resource_uri))
+        data = Marver::DataContainer.new(response).results
+        Marver::Creator.build(data)
+      end
     end
   end
 end

@@ -10,6 +10,11 @@ module Marver
         @type = json['type'] || nil
       end
 
+      def full
+        response = Marver::API::Response.new(RestClient.get(@resource_uri))
+        data = Marver::DataContainer.new(response).results
+        Marver::Event.build(data)
+      end
     end
   end
 end
