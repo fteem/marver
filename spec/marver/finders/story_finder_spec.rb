@@ -14,7 +14,7 @@ describe Marver::StoryFinder do
     end
 
     it 'builds a Story out of the received json' do
-      expect(Marver::StoryFinder.find({ name: 'Cover #892' })).to be_kind_of(Marver::Story)
+      expect(Marver::StoryFinder.new.find({ name: 'Cover #892' })).to be_kind_of(Marver::Story)
     end
   end
 end

@@ -14,7 +14,7 @@ describe Marver::SerieFinder do
     end
 
     it 'builds a Serie out of the received json' do
-      expect(Marver::SerieFinder.find({ name: 'The Avengers' })).to be_kind_of(Marver::Serie)
+      expect(Marver::SerieFinder.new.find({ name: 'The Avengers' })).to be_kind_of(Marver::Serie)
     end
   end
 end

@@ -13,7 +13,7 @@ describe Marver::ComicFinder do
     end
 
     it 'builds a Comic out of the received json' do
-      expect(Marver::ComicFinder.find({ name: 'The Avengers' })).to be_kind_of(Marver::Comic)
+      expect(Marver::ComicFinder.new.find({ name: 'The Avengers' })).to be_kind_of(Marver::Comic)
     end
   end
 end

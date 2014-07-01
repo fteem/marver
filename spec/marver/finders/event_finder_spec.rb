@@ -13,7 +13,7 @@ describe Marver::EventFinder do
     end
 
     it 'builds an Event out of the received json' do
-      expect(Marver::EventFinder.find({ title: 'Fall of the Mutants' })).to be_kind_of(Marver::Event)
+      expect(Marver::EventFinder.new.find({ title: 'Fall of the Mutants' })).to be_kind_of(Marver::Event)
     end
   end
 end
