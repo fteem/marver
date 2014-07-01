@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe Marver::Comic do
-  let(:json) { JSON.parse(fixture('comic.json').read)['data']['results'].first }
-  let(:comic) { Marver::Comic.new(json) }
+
+  let(:json) { fixture('comic.json').read }
+  let(:response) { Marver::API::Response.new(json) }
+  let(:data_container) { Marver::DataContainer.new(response) }
+  let(:comic) { Marver::Comic.new(data_container.results) }
 
   it '#id - The unique ID of the comic resource' do
     expect(comic.id).to eq 38524

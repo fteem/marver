@@ -28,14 +28,14 @@ describe Marver::Event do
   end
 
   it '#start - The date of publication of the first issue in this event.' do
-    expect(event.start.class).to eq Date
+    expect(event.start.class).to eq DateTime
     expect(event.start.year).to eq 1988
     expect(event.start.month).to eq 01
     expect(event.start.day).to eq 10
   end
 
   it '#end - The date of publication of the last issue in this event.' do
-    expect(event.end.class).to eq Date
+    expect(event.end.class).to eq DateTime
     expect(event.end.year).to eq 2007
     expect(event.end.month).to eq 01
     expect(event.end.day).to eq 17

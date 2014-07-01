@@ -1,4 +1,5 @@
 require 'rest_client'
+require 'time'
 require 'marver/version'
 
 module Marver
@@ -10,6 +11,10 @@ module Marver
 
   # Finders
   autoload :CharacterFinder,        'marver/finders/character_finder'
+  autoload :SerieFinder,            'marver/finders/serie_finder'
+  autoload :ComicFinder,            'marver/finders/comic_finder'
+  autoload :EventFinder,            'marver/finders/event_finder'
+  autoload :StoryFinder,            'marver/finders/story_finder'
 
   # API
   autoload :API,                   'marver/api'

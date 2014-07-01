@@ -14,4 +14,15 @@ describe Marver::Client do
     expect(@client.characters.class).to eq Marver::CharacterFinder
   end
 
+  it 'has a serie finder' do
+    expect(@client.series.class).to eq Marver::SerieFinder
+  end
+
+  it 'has a comic finder' do
+    expect(@client.comics.class).to eq Marver::ComicFinder
+  end
+
+  it 'has a story finder' do
+    expect(@client.stories.class).to eq Marver::StoryFinder
+  end
 end

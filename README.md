@@ -2,7 +2,7 @@ Marver
 ======
 
 Marver is an easy to use Ruby gem for [Marvel's API](http://developer.marvel.com/).
-It is still **in development**, has some basic functionality, but it's still work-in-progress.
+It is still very much work in progress. Has lots of rough edges that you might cut yourself on. You've been warned.
 
 ## Installation
 
@@ -27,8 +27,11 @@ Marver.configure do |config|
 end
 
 client = Marver::Client.new
-client.characters.find({ name: 'Hulk' }) # Returns Hulk
-client.serie.find({ name: 'The Avengers' }) # Returns The Avengers
+client.characters.find({ name: 'Hulk' })
+client.series.find({ title: 'The Avengers' })
+client.events.find({ title: 'Fall of the mutants' })
+client.stories.find({ title: 'Name of a story' }) 
+client.comics.find({ title: 'Spiderman' }) 
 ```
 
 Also, you can inspect summary (trimmed) objects of the associated entities to one entity.
@@ -48,8 +51,8 @@ hulk.stories # Returns an array of stories where Hulk appears
 A summary object can also morph into a "full view" object.
 
 ```ruby
-comic = hulk.comics.first  # Take first comic where Hulk appears
-comic.full # This will issue an API call and grab the full object with all data for that comic
+comic = hulk.comics.first  # Take first comic where Hulk appears.
+comic.full # This will issue an API call and grab the full object with all data for that comic.
 ```
 
 ### TO DO:
@@ -57,12 +60,7 @@ comic.full # This will issue an API call and grab the full object with all data 
 ##### Entity Finder classes
 Should be implemented within the Marver::Client class.
 
-* CharacterFinder (in progress)
-* SerieFinder
-* StoryFinder
-* ComicFinder
-* EventFinder
-* More?
+CreatorFinder
 
 #### Author
 Ile Eftimov <br/>

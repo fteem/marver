@@ -11,13 +11,13 @@ module Marver
                 :page_count, :resource_uri
 
     class << self
-      def build(response)
-        if response.kind_of?(Array)
-          response.collect do |comic|
-            new(comic)
+      def build(results)
+        if results.kind_of?(Array)
+          results.collect do |comic|
+            Marver::Comic.new(comic)
           end
         else
-          new(response.results)
+          new(results)
         end
       end
     end

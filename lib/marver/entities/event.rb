@@ -25,8 +25,8 @@ module Marver
       @resource_uri = @json['resourceURI']
 
       @description = @json['description']
-      @start = Date.parse(@json['start'])
-      @end = Date.parse(@json['end'])
+      @start = DateTime.parse(@json['start'])
+      @end = DateTime.parse(@json['end'])
       @next = Marver::Summary::Event.new(@json['next'])
       @previous = Marver::Summary::Event.new(@json['previous'])
     end
