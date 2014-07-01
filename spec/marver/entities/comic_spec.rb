@@ -80,7 +80,7 @@ describe Marver::Comic do
     expect(comic.text_objects.first.class).to eq Marver::TextObject
     expect(comic.text_objects.first.type).to eq "issue_solicit_text"
     expect(comic.text_objects.first.language).to eq "en-us"
-    expect(comic.text_objects.first.text).to eq "And there came an Age Of X, an age unlike any other, where there were no X-Menâ€¦mutants were hated and feared. In that age, the remaining mutants created a stronghold, a last bastion for their dying race: Fortress X. And in that Age Of X, when humanity vowed to see Fortress X destroyed, a team of heroes and heroines found themselves united against this terrible mutant threat.  This is their epoch!"
+    expect(comic.text_objects.first.text).to include "In that age, the remaining mutants created a stronghold, a last bastion for their dying race: Fortress X. And in that Age Of X, when humanity vowed to see Fortress X destroyed, a team of heroes and heroines found themselves united against this terrible mutant threat.  This is their epoch!"
   end
 
   it '#urls - A set of public web site URLs for the resource.' do
