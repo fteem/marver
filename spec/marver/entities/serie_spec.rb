@@ -5,8 +5,8 @@ describe Marver::Serie do
 
   let(:json) { fixture('serie.json').read }
   let(:response) { Marver::API::Response.new(json) }
-  let(:data_container) { Marver::DataContainer.new(response) }
-  let(:serie) { Marver::Serie.new(data_container.results) }
+  let(:results) { Marver::DataContainer.new(response).results }
+  let(:serie) { Marver::Factory::Serie.new(results).build }
 
   it '#id - The unique ID of the series resource.' do
     expect(serie.id).to eq 2002

@@ -3,6 +3,7 @@ require 'time'
 require 'marver/version'
 
 module Marver
+  FINDER_FILTERS = [ :orderBy, :limit, :offset ]
 
   # Base Classes
   autoload :Client,                 'marver/client'
@@ -15,12 +16,26 @@ module Marver
   autoload :ComicFinder,            'marver/finders/comic_finder'
   autoload :EventFinder,            'marver/finders/event_finder'
   autoload :StoryFinder,            'marver/finders/story_finder'
+  autoload :CreatorFinder,          'marver/finders/creator_finder'
+
+  #Factories
+  autoload :Factory, 'marver/factories/factory'
 
   # API
   autoload :API,                   'marver/api'
 
   # Helpers & builders
-  autoload :StringHelper,           'marver/helpers/string_helper'
+  autoload :StringHelper,           'marver/utils/string_helper'
+  autoload :FinderParamFilter,      'marver/utils/finder_param_filter'
+
+  # Mappers
+  autoload :Mappable,                   'marver/mappers/mappable'
+  autoload :ComicAttributesMapper,      'marver/mappers/comic_attributes_mapper'
+  autoload :CharacterAttributesMapper,  'marver/mappers/character_attributes_mapper'
+  autoload :CreatorAttributesMapper,    'marver/mappers/creator_attributes_mapper'
+  autoload :EventAttributesMapper,      'marver/mappers/event_attributes_mapper'
+  autoload :SerieAttributesMapper,      'marver/mappers/serie_attributes_mapper'
+  autoload :StoryAttributesMapper,      'marver/mappers/story_attributes_mapper'
 
   # Common Entities
   autoload :TextObject,   'marver/entities/text_object'
@@ -42,7 +57,6 @@ module Marver
 
   autoload :Summarizable, 'marver/entities/summarizable'
   autoload :Commonable,   'marver/entities/commonable'
-  autoload :Queryable,   'marver/entities/queryable'
 
 
   class << self

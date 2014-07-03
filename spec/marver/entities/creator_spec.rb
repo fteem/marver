@@ -5,8 +5,8 @@ describe Marver::Creator do
 
   let(:json) { fixture('creator.json').read }
   let(:response) { Marver::API::Response.new(json) }
-  let(:data_container) { Marver::DataContainer.new(response) }
-  let(:creator) { Marver::Creator.new(data_container.results) }
+  let(:results) { Marver::DataContainer.new(response).results }
+  let(:creator) { Marver::Factory::Creator.new(results).build }
 
   it '#id - The unique ID of the creator resource.' do
     expect(creator.id).to eq 648

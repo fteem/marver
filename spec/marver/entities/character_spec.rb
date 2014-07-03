@@ -6,7 +6,7 @@ describe Marver::Character do
     let(:json) { fixture('character.json').read }
     let(:response) { Marver::API::Response.new(json) }
     let(:data_container) { Marver::DataContainer.new(response) }
-    let(:character) { Marver::Character.new(data_container.results) }
+    let(:character) { Marver::Factory::Character.new(data_container.results).build }
 
     it '#id - The unique ID of the character resource' do
       expect(character.id).to eq 1009220

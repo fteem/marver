@@ -4,8 +4,8 @@ describe Marver::Story do
   describe "Attributes" do
     let(:json) { fixture('story.json').read }
     let(:response) { Marver::API::Response.new(json) }
-    let(:data_container) { Marver::DataContainer.new(response) }
-    let(:story) { Marver::Story.new(data_container.results) }
+    let(:results) { Marver::DataContainer.new(response).results }
+    let(:story) { Marver::Factory::Story.new(results).build }
 
     it "#title - The story title." do
       expect(story.title).to eq "Cover #892"

@@ -1,4 +1,4 @@
-require './lib/marver.rb'
+require './lib/marver'
 
 module Marver
   module Summary
@@ -12,9 +12,9 @@ module Marver
       end
 
       def full
-        response = Marver::API::Response.new(RestClient.get(@resource_uri))
-        data = Marver::DataContainer.new(response)
-        Marver::Comic.build(data.results)
+        response = Marver::API::Client.new.get_uri(@resource_uri)
+        results = Marver::DataContainer.new(response).results
+        Marver::Factory::Comic.new(results).build
       end
     end
   end

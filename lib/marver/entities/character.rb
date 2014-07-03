@@ -2,32 +2,20 @@ require './lib/marver.rb'
 
 module Marver
   class Character
-    include Marver::Summarizable
-    include Marver::Commonable
+    attr_reader :id, :resource_uri, :description, :thumbnail, :urls, :name, 
+                :series, :stories, :events, :comics, :full_path
 
-    attr_reader :json, :id, :resource_uri, :description, :name
+    def initialize(args)
+      @series   = args[:series]
+      @stories  = args[:stories]
+      @events   = args[:events]
+      @comics   = args[:comics]
+      @urls     = args[:urls]
+      @thumbnail = args[:thumbnail]
 
-    class << self
-      def build(results)
-        if results.kind_of?(Array)
-          results.collect do |character|
-            Marver::Character.new(character)
-          end
-        else
-          new(results)
-        end
+      args[:attributes].each do |name, value|
+        instance_variable_set("@#{name}", value)
       end
     end
-
-    def initialize(json)
-      @json = json
-
-      @description = json['description']
-
-      @id = json['id'].to_i
-      @name = json['name']
-      @resource_uri = json['resourceURI']
-    end
-
   end
 end

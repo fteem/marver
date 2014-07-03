@@ -11,7 +11,7 @@ describe Marver::API::Credentials do
 
   end
 
-  it "returns api credentials as query string" do
-    expect(Marver::API::Credentials.get).to eq "&ts=1&apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819"
+  it "returns api credentials as hash" do
+    expect(Marver::API::Credentials.get).to eq({ ts: "1", apikey: "pub_key", hash: "3d4ce88a477c7e4a5accbf6cd2c8b819" })
   end
 end

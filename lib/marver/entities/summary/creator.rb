@@ -1,3 +1,5 @@
+require './lib/marver'
+
 module Marver
   module Summary
     class Creator
@@ -11,8 +13,8 @@ module Marver
 
       def full
         response = Marver::API::Response.new(RestClient.get(@resource_uri))
-        data = Marver::DataContainer.new(response).results
-        Marver::Creator.build(data)
+        results = Marver::DataContainer.new(response).results
+        Marver::Factory::Creator.new(results).build
       end
     end
   end

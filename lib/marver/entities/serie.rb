@@ -1,37 +1,23 @@
 module Marver
   class Serie
-    include Marver::Summarizable
-    include Marver::Commonable
+    attr_reader :id, :title, :resource_uri, :description, :start_year, :end_year, :comics,
+                :rating, :previous, :stories, :events, :creators, :characters, :next,
+                :urls, :thumbnail
 
-    attr_reader :json, :id, :title, :resource_uri, :description,
-                :start_year, :end_year, :rating, :next, :previous
+    def initialize(args)
+      @stories = args[:stories]
+      @events = args[:events]
+      @creators = args[:creators]
+      @characters = args[:characters]
+      @next = args[:next_serie]
+      @previous = args[:prev_serie]
+      @comics = args[:comics]
+      @urls = args[:urls]
+      @thumbnail = args[:thumbnail]
 
-    class << self
-      def build(results)
-        if results.kind_of?(Array)
-          results.collect do |serie|
-            Marver::Serie.new(serie)
-          end
-        else
-          new(results)
-        end
+      args[:attributes].each do |name, value|
+        instance_variable_set("@#{name}", value)
       end
     end
-
-    def initialize(json)
-      @json = json
-
-      @id = @json['id']
-      @title = @json['title']
-      @resource_uri = @json['resourceURI']
-      @description = @json['description']
-      @start_year = @json['startYear']
-      @end_year = @json['endYear']
-      @rating = @json['rating']
-
-      @next = Marver::Summary::Serie.new(@json['next'])
-      @previous = Marver::Summary::Serie.new(@json['previous'])
-    end
-
   end
 end

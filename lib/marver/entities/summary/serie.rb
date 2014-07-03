@@ -1,3 +1,4 @@
+require './lib/marver.rb'
 module Marver
   module Summary
     class Serie
@@ -10,10 +11,9 @@ module Marver
 
       def full
         response = Marver::API::Response.new(RestClient.get(@resource_uri))
-        data = Marver::DataContainer.new(response).results
-        Marver::Serie.build(data)
+        results = Marver::DataContainer.new(response).results
+        Marver::Factory::Serie.new(results).build
       end
-
     end
   end
 end

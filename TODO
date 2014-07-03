@@ -1,3 +1,0 @@
-1. Fix grouping of classes by directory. Should be in context of namespacing.
-3. Build objects when data is parsed.
-4. Improve Marver::REST::Client by returning parsed JSON.

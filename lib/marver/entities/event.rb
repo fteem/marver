@@ -1,34 +1,25 @@
 module Marver
   class Event
-    include Marver::Summarizable
-    include Marver::Commonable
+    attr_reader :title, :resource_uri, :description, :start, :end, :next, :previous,
+      :series, :stories, :events, :comics, :characters, :creators, :urls, :thumbnail
 
-    attr_reader :json, :title, :resource_uri,
-                :description, :start, :end, :next, :previous
+    def initialize(args)
+      @next = args[:next]
+      @previous = args[:previous]
+      @creators = args[:creators]
+      @characters = args[:characters]
+      @series = args[:series]
+      @stories = args[:stories]
+      @events = args[:events]
+      @comics = args[:comics]
+      @urls   = args[:urls]
+      @thumbnail = args[:thumbnail]
+      @start = args[:start]
+      @end = args[:_end]
 
-    class << self
-      def build(results)
-        if results.kind_of?(Array)
-          results.collect do |event|
-            Marver::Event.new(event)
-          end
-        else
-          new(results)
-        end
+      args[:attributes].each do |name, value|
+        instance_variable_set("@#{name}", value)
       end
-    end
-
-    def initialize(json)
-      @json = json
-
-      @title = @json['title']
-      @resource_uri = @json['resourceURI']
-
-      @description = @json['description']
-      @start = DateTime.parse(@json['start'])
-      @end = DateTime.parse(@json['end'])
-      @next = Marver::Summary::Event.new(@json['next'])
-      @previous = Marver::Summary::Event.new(@json['previous'])
     end
   end
 end

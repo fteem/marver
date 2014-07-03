@@ -5,7 +5,7 @@ describe Marver::Comic do
   let(:json) { fixture('comic.json').read }
   let(:response) { Marver::API::Response.new(json) }
   let(:data_container) { Marver::DataContainer.new(response) }
-  let(:comic) { Marver::Comic.new(data_container.results) }
+  let(:comic) { Marver::Factory::Comic.new(data_container.results).build }
 
   it '#id - The unique ID of the comic resource' do
     expect(comic.id).to eq 38524

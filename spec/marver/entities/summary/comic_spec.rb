@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe Marver::Summary::Comic do
+  
+  before do
+    Marver.configure do |config|
+      config.public_key = "pub_key"
+      config.private_key = "priv_key"
+    end
+  end
+
   let(:comic_summary) { Marver::Summary::Comic.new({ "id" => "123", "resourceURI" => "http://example.net", "name" => "Hulk" }) }
 
   it '#id' do
@@ -23,7 +31,7 @@ describe Marver::Summary::Comic do
   describe '#full' do
     before :each do
       Time.stub_chain(:now, :to_i, :to_s).and_return "1"
-      stub_get(comic_summary.resource_uri).to_return(:body => fixture('comic.json'), :headers => {:content_type => 'application/json; charset=utf-8'})
+      stub_get(comic_summary.resource_uri + "?apikey=pub_key&hash=3d4ce88a477c7e4a5accbf6cd2c8b819&ts=1").to_return(:body => fixture('comic.json'), :headers => {:content_type => 'application/json; charset=utf-8'})
       @full_comic = comic_summary.full
     end
 

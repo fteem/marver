@@ -5,7 +5,7 @@ describe Marver::Event do
   let(:json) { fixture('event.json').read }
   let(:response) { Marver::API::Response.new(json) }
   let(:data_container) { Marver::DataContainer.new(response) }
-  let(:event) { Marver::Event.new(data_container.results) }
+  let(:event) { Marver::Factory::Event.new(data_container.results).build }
 
   it "#title - The title of the event." do
     expect(event.title).to eq "Fall of the Mutants"

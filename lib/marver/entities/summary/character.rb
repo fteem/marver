@@ -14,8 +14,8 @@ module Marver
 
       def full
         response = Marver::API::Response.new(RestClient.get(@resource_uri))
-        data = Marver::DataContainer.new(response).results
-        Marver::Character.build(data)
+        results = Marver::DataContainer.new(response).results
+        Marver::Factory::Character.new(results).build
       end
 
     end

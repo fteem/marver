@@ -25,4 +25,12 @@ describe Marver::Client do
   it 'has a story finder' do
     expect(@client.stories.class).to eq Marver::StoryFinder
   end
+
+  it 'has a creator finder' do
+    expect(@client.creators.class).to eq Marver::CreatorFinder
+  end
+
+  it 'has a event finder' do
+    expect(@client.events.class).to eq Marver::EventFinder
+  end
 end

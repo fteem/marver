@@ -12,7 +12,7 @@ module Marver
           timestamp = Time.now.to_i.to_s
           hash = Digest::MD5.hexdigest(timestamp + private_key + public_key)
 
-          "&ts=#{timestamp}&apikey=#{public_key}&hash=#{hash}"
+          { ts: timestamp, apikey: public_key, hash: hash }
         end
       end
 
