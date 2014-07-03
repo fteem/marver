@@ -6,6 +6,8 @@ Marver
 Marver is an easy to use Ruby gem for [Marvel's API](http://developer.marvel.com/).
 It is still very much work in progress. Has lots of rough edges that you might cut yourself on. You've been warned.
 
+Note: I would recommend waiting for v1.0 before using the gem in production environment.
+
 ## Installation
 
 Add this line to your application's Gemfile:
