@@ -62,6 +62,7 @@ comic.full # This will issue an API call and grab the full object with all data 
 
 ### TO DO:
 - Error handling.
+- Add content to the wiki.
 - Inspect dependency graph?
 
 #### Author
