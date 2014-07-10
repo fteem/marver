@@ -31,11 +31,11 @@ Marver.configure do |config|
 end
 
 client = Marver::Client.new
-client.characters.find({ name: 'Hulk' })
-client.series.find({ title: 'The Avengers' })
-client.events.find({ title: 'Fall of the mutants' })
-client.stories.find({ title: 'Name of a story' }) 
-client.comics.find({ title: 'Spiderman' }) 
+client.characters.find_by_name 'Hulk'
+client.series.find_by_title 'The Avengers'
+client.events.find_by_title 'Fall of the mutants'
+client.stories.find_by_title 'Name of a story'
+client.comics.find_by_title 'Spiderman'
 ```
 
 Also, you can inspect summary (trimmed) objects of the associated entities to one entity.
@@ -47,7 +47,7 @@ Marver.configure do |config|
 end
 
 client = Marver::Client.new
-hulk = client.characters.find({ name: 'Hulk' })
+hulk = client.characters.find_by_name 'Hulk'
 hulk.comics  # Returns an array of comics summaries
 hulk.stories # Returns an array of stories where Hulk appears
 ```
@@ -60,14 +60,8 @@ comic.full # This will issue an API call and grab the full object with all data 
 ```
 
 ### TO DO:
-
-##### Entity Finder classes
-Should be implemented within the Marver::Client class.
-
-CreatorFinder
+Inspect dependency graph?
 
 #### Author
 Ile Eftimov <br/>
 [twitter](http://twitter.com/fteem)  [website](http://eftimov.net)
-
-Any kind of contribution is welcomed & encouraged :)
