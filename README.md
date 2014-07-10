@@ -3,8 +3,9 @@ Marver
 
 ![TravisCI](https://travis-ci.org/fteem/marver.svg?branch=master)
 
-Marver is an easy to use Ruby gem for [Marvel's API](http://developer.marvel.com/).
-It is still very much work in progress. Has lots of rough edges that you might cut yourself on. You've been warned.
+Marver is an easy to use Ruby gem for [Marvel's API](http://developer.marvel.com/). 
+It contains wrappers around the API entities and provides a very easy interface to communicate 
+with the API. You can take a look at the usage examples below on how to use it.
 
 Note: I would recommend waiting for v1.0 before using the gem in production environment.
 
