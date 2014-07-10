@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    marver (0.0.6)
+    marver (0.1.0)
       rest-client
 
 GEM

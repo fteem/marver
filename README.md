@@ -60,7 +60,8 @@ comic.full # This will issue an API call and grab the full object with all data 
 ```
 
 ### TO DO:
-Inspect dependency graph?
+- Error handling.
+- Inspect dependency graph?
 
 #### Author
 Ile Eftimov <br/>
