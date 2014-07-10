@@ -2,6 +2,7 @@ Marver
 ======
 
 ![TravisCI](https://travis-ci.org/fteem/marver.svg?branch=master)
+[![Code Climate](https://codeclimate.com/github/fteem/marver.png)](https://codeclimate.com/github/fteem/marver)
 
 Marver is an easy to use Ruby gem for [Marvel's API](http://developer.marvel.com/). 
 It contains wrappers around the API entities and provides a very easy interface to communicate 
