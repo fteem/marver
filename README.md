@@ -67,6 +67,7 @@ comic.full # This will issue an API call and grab the full object with all data 
 - Error handling.
 - Add content to the wiki.
 - Inspect dependency graph?
+  - https://github.com/dcadenas/rubydeps
 
 #### Author
 Ile Eftimov <br/>
