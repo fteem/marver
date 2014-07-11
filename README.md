@@ -40,32 +40,12 @@ client.stories.find_by_title 'Name of a story'
 client.comics.find_by_title 'Spiderman'
 ```
 
-Also, you can inspect summary (trimmed) objects of the associated entities to one entity.
+You can read more about using this gem in the [wiki](https://github.com/fteem/marver/wiki).
 
-```ruby
-Marver.configure do |config|
-  config.public_key = 'your_public_key'
-  config.private_key = 'your_private_key'
-end
-
-client = Marver::Client.new
-hulk = client.characters.find_by_name 'Hulk'
-hulk.comics  # Returns an array of comics summaries
-hulk.stories # Returns an array of stories where Hulk appears
-```
-
-A summary object can also morph into a "full view" object.
-
-```ruby
-comic = hulk.comics.first  # Take first comic where Hulk appears.
-comic.full # This will issue an API call and grab the full object with all data for that comic.
-```
-
-### TO DO:
+### Still on the TO DO list:
 - Summary collections pagination.
   - Example: For a Comic that more than 20 Event summary objects (default amount fetched) the user should be able to step through them.
 - Error handling.
-- Add content to the wiki.
 - Inspect dependency graph?
   - https://github.com/dcadenas/rubydeps
 
