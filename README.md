@@ -62,6 +62,8 @@ comic.full # This will issue an API call and grab the full object with all data 
 ```
 
 ### TO DO:
+- Summary collections pagination.
+  - Example: For a Comic that more than 20 Event summary objects (default amount fetched) the user should be able to step through them.
 - Error handling.
 - Add content to the wiki.
 - Inspect dependency graph?
